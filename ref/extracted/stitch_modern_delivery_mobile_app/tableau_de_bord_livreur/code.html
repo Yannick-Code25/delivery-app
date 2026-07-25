@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Babali Livreur - Missions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "surface-container": "#eceeef",
+                    "primary-fixed-dim": "#f9bd3f",
+                    "tertiary-fixed": "#7ef8d5",
+                    "secondary-fixed": "#dde2f0",
+                    "surface-dim": "#d8dadb",
+                    "primary-fixed": "#ffdea6",
+                    "tertiary-container": "#66e1bf",
+                    "surface-container-high": "#e6e8e9",
+                    "primary": "#7c5800",
+                    "on-secondary-fixed-variant": "#414752",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-container": "#00624f",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#f8fafb",
+                    "background": "#f8fafb",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "surface-variant": "#e1e3e4",
+                    "outline-variant": "#d4c4ae",
+                    "secondary-fixed-dim": "#c1c7d3",
+                    "inverse-on-surface": "#eff1f2",
+                    "on-secondary-container": "#5f6570",
+                    "error-container": "#ffdad6",
+                    "outline": "#827562",
+                    "tertiary": "#006b56",
+                    "on-secondary-fixed": "#161c25",
+                    "on-primary": "#ffffff",
+                    "secondary": "#595f6a",
+                    "on-surface": "#191c1d",
+                    "on-surface-variant": "#504534",
+                    "on-tertiary-fixed-variant": "#005140",
+                    "on-primary-container": "#715000",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#5e4200",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8fafb",
+                    "on-primary-fixed": "#271900",
+                    "secondary-container": "#dde2f0",
+                    "surface-tint": "#7c5800",
+                    "surface-container-low": "#f2f4f5",
+                    "tertiary-fixed-dim": "#60dbba",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#191c1d",
+                    "on-tertiary-fixed": "#002018",
+                    "inverse-primary": "#f9bd3f",
+                    "primary-container": "#ffc244"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "lg": "40px",
+                    "sm": "12px",
+                    "margin-desktop": "120px",
+                    "xl": "64px",
+                    "base": "8px",
+                    "gutter": "16px",
+                    "margin-mobile": "20px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Montserrat"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "headline-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8fafb;
+            color: #191c1d;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .mission-card {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .mission-card:active {
+            transform: scale(0.97);
+        }
+        .status-pill {
+            transition: all 0.3s ease;
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim w-full sticky top-0 z-40 shadow-sm flex items-center justify-between px-margin-mobile py-sm w-full">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[32px]">account_circle</span>
+<h1 class="font-headline-md text-headline-md-mobile text-primary">En ligne</h1>
+</div>
+<button class="bg-primary-container text-on-primary-container px-md py-xs rounded-full font-label-md hover:bg-surface-container-high transition-colors active:scale-95 duration-150" id="statusToggle">
+            Hors ligne
+        </button>
+</header>
+<main class="flex-grow px-margin-mobile pt-md pb-xl">
+<!-- Live Map Background Decoration (Simulated) -->
+<div class="relative w-full h-48 mb-lg rounded-xl overflow-hidden shadow-sm">
+<div class="w-full h-full bg-cover bg-center opacity-80" data-alt="A stylized aerial vector map of a modern city grid with glowing delivery routes in vibrant yellow. The map is clean and minimalist, featuring soft charcoal building shapes and bright white streets under a bright, high-key daylight lighting. The aesthetic is tech-forward and energetic, echoing a premium urban delivery experience." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAPLPesPsnoJhqDt50EmIOz9Z2laPBEP-kdUPyv74-xpn0TmnsAWRBMOpt8NQ5XseqA3qlE3NyPUzmUexulTruehNQjqKTzvDr-P7Htfc9OJh4zFyG_jYMqG2JP2W328qURTsltcgibSHYxHGMmMHq2ki36j7YWKZbEEJBSghPW6lnAzytKyAskcfbzzMzbrgfwV7PzQkNpn_dpwI4CXS_B9okpaf1t6r4dE7ZJaA9vtBSUXoxMocBtQ86Tq1sL_Cxh_DfIbZSzN-qH')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex items-center gap-xs bg-surface/90 backdrop-blur-md px-sm py-xs rounded-full shadow-lg">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+<span class="font-label-sm text-on-surface">3 missions à proximité</span>
+</div>
+</div>
+<!-- Section Title -->
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Missions disponibles</h2>
+<span class="material-symbols-outlined text-secondary">tune</span>
+</div>
+<!-- Missions List -->
+<div class="flex flex-col gap-md">
+<!-- Mission Card 1 -->
+<div class="mission-card bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-surface-container overflow-hidden flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Restaurant</span>
+<h3 class="font-headline-md text-on-surface">Le Petit Gourmet</h3>
+</div>
+<div class="bg-primary-container/20 text-primary px-sm py-xs rounded-lg flex items-center gap-xs">
+<span class="font-headline-md">12,50 €</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm my-xs">
+<div class="flex items-center gap-sm">
+<div class="bg-surface-container w-10 h-10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">near_me</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm text-secondary">Distance</span>
+<span class="font-label-md text-on-surface">1.2 km</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="bg-surface-container w-10 h-10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">schedule</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm text-secondary">Temps est.</span>
+<span class="font-label-md text-on-surface">18 min</span>
+</div>
+</div>
+</div>
+<div class="pt-xs flex items-center gap-sm">
+<button class="flex-grow bg-primary text-on-primary font-label-md py-sm rounded-xl active:scale-95 transition-all shadow-md">
+                        Accepter
+                    </button>
+<button class="w-12 h-12 flex items-center justify-center border border-outline/20 rounded-xl text-secondary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+</div>
+<!-- Mission Card 2 -->
+<div class="mission-card bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-surface-container overflow-hidden flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Restaurant</span>
+<h3 class="font-headline-md text-on-surface">Burger Flash</h3>
+</div>
+<div class="bg-primary-container/20 text-primary px-sm py-xs rounded-lg flex items-center gap-xs">
+<span class="font-headline-md">8,20 €</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm my-xs">
+<div class="flex items-center gap-sm">
+<div class="bg-surface-container w-10 h-10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">near_me</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm text-secondary">Distance</span>
+<span class="font-label-md text-on-surface">0.5 km</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="bg-surface-container w-10 h-10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">schedule</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm text-secondary">Temps est.</span>
+<span class="font-label-md text-on-surface">12 min</span>
+</div>
+</div>
+</div>
+<div class="pt-xs flex items-center gap-sm">
+<button class="flex-grow bg-primary text-on-primary font-label-md py-sm rounded-xl active:scale-95 transition-all shadow-md">
+                        Accepter
+                    </button>
+<button class="w-12 h-12 flex items-center justify-center border border-outline/20 rounded-xl text-secondary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+</div>
+<!-- Mission Card 3 (Promoted/Bonus) -->
+<div class="mission-card bg-inverse-surface rounded-xl p-md shadow-lg border-l-4 border-primary overflow-hidden flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<div class="flex items-center gap-xs">
+<span class="font-label-sm text-primary-fixed uppercase tracking-wider">Restaurant</span>
+<span class="bg-primary-container text-on-primary-container text-[10px] px-1 rounded font-bold">BONUS</span>
+</div>
+<h3 class="font-headline-md text-white">Sushi Zen</h3>
+</div>
+<div class="bg-primary px-sm py-xs rounded-lg flex flex-col items-end">
+<span class="font-headline-md text-white">15,75 €</span>
+<span class="text-[10px] text-primary-fixed">+2,00 € bonus</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm my-xs">
+<div class="flex items-center gap-sm">
+<div class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed">near_me</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm text-white/60">Distance</span>
+<span class="font-label-md text-white">2.4 km</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed">schedule</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm text-white/60">Temps est.</span>
+<span class="font-label-md text-white">25 min</span>
+</div>
+</div>
+</div>
+<div class="pt-xs flex items-center gap-sm">
+<button class="flex-grow bg-primary-container text-on-primary-container font-label-md py-sm rounded-xl active:scale-95 transition-all shadow-md">
+                        Accepter
+                    </button>
+<button class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-xl text-white/80 hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface dark:bg-surface-dim shadow-[0_-4px_20px_rgba(0,0,0,0.06)] flex justify-around items-center px-sm py-xs w-full">
+<!-- Item 1: Active -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions_run</span>
+<span class="font-label-sm text-label-sm">Missions</span>
+</a>
+<!-- Item 2 -->
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 hover:bg-surface-container-highest active:scale-90 duration-200 transition-all p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Revenus</span>
+</a>
+<!-- Item 3 -->
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 hover:bg-surface-container-highest active:scale-90 duration-200 transition-all p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profil</span>
+</a>
+</nav>
+<script>
+        document.getElementById('statusToggle').addEventListener('click', function() {
+            const isOnline = this.textContent.trim() === 'Hors ligne';
+            const headline = document.querySelector('header h1');
+            
+            if (isOnline) {
+                this.textContent = 'En ligne';
+                this.classList.replace('bg-primary-container', 'bg-surface-container');
+                this.classList.replace('text-on-primary-container', 'text-secondary');
+                headline.textContent = 'Hors ligne';
+                headline.classList.replace('text-primary', 'text-secondary');
+            } else {
+                this.textContent = 'Hors ligne';
+                this.classList.replace('bg-surface-container', 'bg-primary-container');
+                this.classList.replace('text-secondary', 'text-on-primary-container');
+                headline.textContent = 'En ligne';
+                headline.classList.replace('text-secondary', 'text-primary');
+            }
+        });
+
+        // Simple haptic-like feedback on mission cards
+        document.querySelectorAll('.mission-card button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (window.navigator.vibrate) {
+                    window.navigator.vibrate(10);
+                }
+            });
+        });
+    </script>
+</body></html>

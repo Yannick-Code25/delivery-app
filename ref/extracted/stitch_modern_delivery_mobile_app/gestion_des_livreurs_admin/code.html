@@ -1,0 +1,242 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "inverse-on-surface": "#eff1f2", "on-tertiary-fixed": "#002018", "on-error-container": "#93000a", "on-error": "#ffffff", "on-tertiary-container": "#00624f", "on-primary": "#ffffff", "surface-variant": "#e1e3e4", "on-primary-fixed-variant": "#5e4200", "on-primary-fixed": "#271900", "secondary-container": "#dde2f0", "on-secondary-fixed": "#161c25", "outline-variant": "#d4c4ae", "primary-fixed": "#ffdea6", "secondary-fixed-dim": "#c1c7d3", "surface-container-highest": "#e1e3e4", "surface-container-lowest": "#ffffff", "on-background": "#191c1d", "secondary-fixed": "#dde2f0", "tertiary-container": "#66e1bf", "surface-dim": "#d8dadb", "secondary": "#595f6a", "surface-tint": "#7c5800", "surface-bright": "#f8fafb", "surface": "#f8fafb", "on-surface": "#191c1d", "on-primary-container": "#715000", "primary": "#7c5800", "on-surface-variant": "#504534", "on-tertiary-fixed-variant": "#005140", "inverse-primary": "#f9bd3f", "surface-container": "#eceeef", "on-secondary": "#ffffff", "surface-container-low": "#f2f4f5", "on-secondary-container": "#5f6570", "tertiary-fixed": "#7ef8d5", "primary-fixed-dim": "#f9bd3f", "error-container": "#ffdad6", "tertiary-fixed-dim": "#60dbba", "error": "#ba1a1a", "background": "#f8fafb", "inverse-surface": "#2e3132", "primary-container": "#ffc244", "outline": "#827562", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "xl": "64px", "base": "8px", "margin-desktop": "120px", "margin-mobile": "20px", "sm": "12px", "md": "24px", "xs": "4px", "lg": "40px", "gutter": "16px" }, "fontFamily": { "label-md": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-lg": ["Montserrat"], "headline-lg-mobile": ["Montserrat"], "body-md": ["Plus Jakarta Sans"], "headline-md": ["Montserrat"], "body-lg": ["Plus Jakarta Sans"], "headline-xl": ["Montserrat"] }, "fontSize": { "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }] } } } }</script><style>@layer base{body{-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}} .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-background text-on-surface font-body-md"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><span class="font-headline-md text-headline-md text-on-surface">Fleet Control</span><div class="flex items-center gap-sm"><button class="w-11 h-11 flex items-center justify-center"><span class="material-symbols-outlined text-on-surface-variant">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary-container text-[18px]">person</span></div></div></div></header><main class="pt-16 min-h-screen bg-surface"><div class="flex flex-col w-full pb-xl">
+<!-- Stats Summary Section -->
+<section class="px-margin-mobile py-md">
+<div class="grid grid-cols-2 gap-gutter">
+<div class="bg-primary-container p-md rounded-xl shadow-sm flex flex-col gap-xs transition-transform active:scale-95 cursor-default">
+<div class="flex items-center gap-xs text-on-primary-container">
+<span class="material-symbols-outlined text-[20px]">delivery_dining</span>
+<span class="font-label-md text-label-md">Active Couriers</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-primary-container">142</span>
+<span class="font-label-sm text-label-sm text-on-primary-container/70">+12%</span>
+</div>
+</div>
+<div class="bg-tertiary-container p-md rounded-xl shadow-sm flex flex-col gap-xs transition-transform active:scale-95 cursor-default">
+<div class="flex items-center gap-xs text-on-tertiary-container">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+<span class="font-label-md text-label-md">Avg. Delivery</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-tertiary-container">24m</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container/70">-2m</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Search & Filter Bar -->
+<section class="px-margin-mobile mb-md">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant/50 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-low rounded-full font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all border-none" id="courierSearch" placeholder="Search couriers by name or ID..." type="text"/>
+</div>
+</section>
+<!-- Fleet List -->
+<section class="px-margin-mobile flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">Fleet Status</h2>
+<button class="flex items-center gap-xs text-primary font-label-md">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+        Filters
+      </button>
+</div>
+<!-- Courier Cards -->
+<div class="flex flex-col gap-md" id="fleetContainer">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-surface-variant/30 flex flex-col gap-md">
+<div class="flex items-start justify-between">
+<div class="flex gap-md">
+<div class="relative">
+<div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a friendly delivery courier smiling at the camera, high-end studio lighting, soft bokeh background, wearing a yellow branded polo shirt." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRnpCyH50yY2qiq2OEZbwpfagsUebF8nPCCL29Bz4rPfKPuXULZCb3BW8PJRjSpSaFf0LuD-MRJOwIzv1Ay2W0AdqFvwzJls526OQyLhn2jpzr-ATFewlCjUd9PMjY99AwihKat_3-6Kknz32wK9iR_k4Az0k7XNfAz7Gl_Hvcy5LOOwlxT7vCrVEeUORhqcVhRWyzpHh_rkCK5yrdiMeRlIe1kGTwTkHK0QUqT0VB5Z-FBwpu-dKLj3QWVXfCO5pDFH2XKZc3lyCE"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-surface-container-lowest rounded-full flex items-center justify-center">
+<div class="w-3 h-3 bg-tertiary rounded-full animate-pulse"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface">Marco Rossi</span>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">electric_scooter</span>
+<span class="font-label-sm text-label-sm">Electric Scooter • 4.9 ★</span>
+</div>
+</div>
+</div>
+<div class="bg-tertiary/10 text-tertiary px-sm py-xs rounded-full">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Online</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md border-t border-surface-variant/20 pt-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Deliveries</span>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">1,248</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Current Zone</span>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">Downtown Central</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex-1 h-10 bg-primary text-on-primary rounded-lg font-label-md flex items-center justify-center gap-xs active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">map</span>
+            Assign Zone
+          </button>
+<button class="w-10 h-10 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+<button class="w-10 h-10 bg-surface-container-high text-on-surface-variant rounded-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-surface-variant/30 flex flex-col gap-md opacity-90">
+<div class="flex items-start justify-between">
+<div class="flex gap-md">
+<div class="relative">
+<div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a courier with a friendly expression, wearing a sleek black helmet and a yellow jacket, urban city background with blurred morning sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXbMnyGQbGW5azZ736a0iY2tq_bDa3mMGw2s6xL9XKBRFmphjpNCB4pv4DTOafU__J9JBFkthCXHg4rDECTBUcVvp935Jnz7gVjS9oP8Q3hzGnKytpkI9fj0EOyrTdIbSTr2kNX-08kU1vo28omCsG-KGceCpgEtD9KMPb_IwGu-BR5ZUvupGW-8ZFMH1m4yfWquyMYksbNPH64D3CfA5VjslqcpUy2FBwWoDvyJ1UfAbrhpbOOURpJP28D2t60p8DCtuX8TqrCe2H"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-surface-container-lowest rounded-full flex items-center justify-center">
+<div class="w-3 h-3 bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface">Elena Vance</span>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">pedal_bike</span>
+<span class="font-label-sm text-label-sm">Road Bike • 4.7 ★</span>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 text-primary px-sm py-xs rounded-full">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Busy</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md border-t border-surface-variant/20 pt-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Deliveries</span>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">892</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Current Zone</span>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">West Heights</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex-1 h-10 bg-primary text-on-primary rounded-lg font-label-md flex items-center justify-center gap-xs active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">map</span>
+            Assign Zone
+          </button>
+<button class="w-10 h-10 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+<button class="w-10 h-10 bg-surface-container-high text-on-surface-variant rounded-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 3 (Offline) -->
+<div class="bg-surface-container-low/50 p-md rounded-xl flex flex-col gap-md grayscale">
+<div class="flex items-start justify-between">
+<div class="flex gap-md">
+<div class="relative">
+<div class="w-14 h-14 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a smiling courier leaning against a bicycle, soft afternoon lighting, clear blue sky background, professional and reliable vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWwGBVs3yr8lAIXUZkacFYeuy-5K8LcEf7k6aEnaOoIiwS73kZK3cNVmpuFQLMcs3egGvqMNZiDY822YmCQ5AlnPhBZAuXuH0izocLQqAnJrlN5uPTY0QccgGN0_0PA7pp6WeCOPnTJSm5c7kdoaMTkcQM1_e8dp4ChLxGDXJ5FTXdf6oGiBfBwN8BbAeywZPZhEIHqcVkGTeOpPiyWn2ubqS9poTRzWkDOuiVu_8CDzxA4N_YhaaxwA-3ye-xw8zf_krXsGdXP763"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-surface-container-low rounded-full flex items-center justify-center">
+<div class="w-3 h-3 bg-outline rounded-full"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface-variant">Klaus Werner</span>
+<div class="flex items-center gap-xs text-on-surface-variant/60">
+<span class="material-symbols-outlined text-[16px]">electric_moped</span>
+<span class="font-label-sm text-label-sm">E-Moped • 4.5 ★</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-variant text-on-surface-variant px-sm py-xs rounded-full">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Offline</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex-1 h-10 bg-surface-container-high text-on-surface-variant rounded-lg font-label-md flex items-center justify-center gap-xs opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-[18px]">map</span>
+            Assign Zone
+          </button>
+<button class="w-10 h-10 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+<button class="w-10 h-10 bg-surface-container-high text-on-surface-variant rounded-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Empty State (Hidden) -->
+<section class="hidden px-margin-mobile py-xl flex flex-col items-center text-center gap-md" id="emptyState">
+<div class="w-24 h-24 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[48px] text-primary">search_off</span>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-headline-md text-headline-md text-on-surface">No couriers found</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Try adjusting your search filters or check your spelling.</span>
+</div>
+<button class="text-primary font-label-md underline" onclick="document.getElementById('courierSearch').value=''; filterList('');">Clear search</button>
+</section>
+<script>
+    const searchInput = document.getElementById('courierSearch');
+    const fleetContainer = document.getElementById('fleetContainer');
+    const emptyState = document.getElementById('emptyState');
+    const courierCards = fleetContainer.getElementsByClassName('bg-surface-container-lowest');
+
+    function filterList(query) {
+      let visibleCount = 0;
+      const lowerQuery = query.toLowerCase();
+      
+      Array.from(courierCards).forEach(card => {
+        const name = card.querySelector('.font-headline-md').textContent.toLowerCase();
+        if (name.includes(lowerQuery)) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (visibleCount === 0 && lowerQuery !== '') {
+        fleetContainer.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+      } else {
+        fleetContainer.classList.remove('hidden');
+        emptyState.classList.add('hidden');
+      }
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      filterList(e.target.value);
+    });
+
+    // Ripple effect for cards
+    document.querySelectorAll('.bg-surface-container-lowest').forEach(card => {
+      card.addEventListener('click', function(e) {
+        if (e.target.tagName !== 'BUTTON' && e.target.closest('button') === null) {
+          this.style.backgroundColor = 'var(--surface-container-high)';
+          setTimeout(() => {
+            this.style.backgroundColor = 'var(--surface-container-lowest)';
+          }, 200);
+        }
+      });
+    });
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/80 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16"><a class="flex flex-col items-center gap-xs text-on-surface-variant" data-path="missions" href="#"><span class="material-symbols-outlined">task_alt</span><span class="font-label-sm text-label-sm">Missions</span></a><a class="flex flex-col items-center gap-xs text-on-surface-variant" data-path="history" href="#"><span class="material-symbols-outlined">history</span><span class="font-label-sm text-label-sm">History</span></a><a class="flex flex-col items-center gap-xs text-on-surface-variant" data-path="profile" href="#"><span class="material-symbols-outlined">person</span><span class="font-label-sm text-label-sm">Profile</span></a></div></nav></body></html>

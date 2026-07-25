@@ -1,0 +1,352 @@
+<!DOCTYPE html><html class="light" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Glovo | Livraison à domicile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e1e3e4",
+                        "on-surface": "#191c1d",
+                        "on-tertiary-container": "#00624f",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#c1c7d3",
+                        "inverse-on-surface": "#eff1f2",
+                        "primary": "#7c5800",
+                        "surface": "#f8fafb",
+                        "background": "#f8fafb",
+                        "on-primary-fixed": "#271900",
+                        "surface-container-low": "#f2f4f5",
+                        "outline": "#827562",
+                        "secondary-container": "#dde2f0",
+                        "on-background": "#191c1d",
+                        "inverse-primary": "#f9bd3f",
+                        "on-tertiary-fixed-variant": "#005140",
+                        "on-tertiary-fixed": "#002018",
+                        "on-secondary-fixed-variant": "#414752",
+                        "surface-container-high": "#e6e8e9",
+                        "on-secondary-fixed": "#161c25",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#715000",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#ffc244",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#d4c4ae",
+                        "secondary-fixed": "#dde2f0",
+                        "tertiary-fixed-dim": "#60dbba",
+                        "primary-fixed": "#ffdea6",
+                        "primary-fixed-dim": "#f9bd3f",
+                        "surface-tint": "#7c5800",
+                        "inverse-surface": "#2e3132",
+                        "surface-container": "#eceeef",
+                        "surface-bright": "#f8fafb",
+                        "on-surface-variant": "#504534",
+                        "tertiary-fixed": "#7ef8d5",
+                        "surface-dim": "#d8dadb",
+                        "tertiary-container": "#66e1bf",
+                        "on-error": "#ffffff",
+                        "secondary": "#595f6a",
+                        "on-secondary-container": "#5f6570",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#006b56",
+                        "on-primary-fixed-variant": "#5e4200",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e1e3e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "md": "24px",
+                        "margin-desktop": "120px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "xl": "64px",
+                        "xs": "4px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .bento-card {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bento-card:active { transform: scale(0.95); }
+
+        .category-bubble {
+            width: 80px;
+            height: 80px;
+        }
+        @media (min-width: 768px) {
+            .category-bubble {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-surface shadow-sm h-16 flex items-center justify-between px-margin-mobile">
+<div class="flex items-center gap-base">
+<button class="transition-transform active:scale-95 duration-200 text-primary dark:text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+<h1 class="font-headline-xl text-headline-xl text-primary dark:text-primary-fixed-dim tracking-tighter">Babali</h1>
+</div>
+<div class="hidden md:flex items-center gap-md bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="font-label-md">12 Rue de la Paix, Paris</span>
+</div>
+<button class="transition-transform active:scale-95 duration-200 text-primary dark:text-primary-fixed-dim relative">
+<span class="material-symbols-outlined text-[28px]">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary-container text-on-primary-container text-[10px] font-bold px-1.5 py-0.5 rounded-full">2</span>
+</button>
+</header>
+<main class="pt-20 pb-32">
+<!-- Search & Location Mobile -->
+<section class="px-margin-mobile mb-md md:hidden">
+<div class="flex items-center gap-xs text-on-surface-variant mb-sm">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-label-sm font-bold">Maintenant • 12 Rue de la Paix...</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant transition-colors group-focus-within:text-primary">search</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-lowest border-none rounded-xl shadow-sm focus:ring-2 focus:ring-primary-container placeholder:text-on-surface-variant/60 font-body-md" placeholder="Que voulez-vous commander ?" type="text">
+</div>
+</section>
+<!-- Signature Circular Navigation (Bento style on tablet/desktop) -->
+<section class="px-margin-mobile mb-xl overflow-x-auto hide-scrollbar">
+<div class="flex md:grid md:grid-cols-5 gap-md min-w-max md:min-w-0 py-2">
+<!-- Restaurantes -->
+<div class="flex flex-col items-center gap-sm group cursor-pointer bento-card">
+<div class="category-bubble rounded-full bg-primary-container flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform overflow-hidden">
+<img class="w-2/3 h-2/3 object-contain" data-alt="A highly detailed 3D stylized render of a delicious burger and steaming fries, centered in a vibrant circle. The lighting is warm and golden, evoking the premium Glovo energy against a clean minimalist background. Professional commercial food photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi6Ei8Ja5x3DM5x7Zd3jQAWp-j8TMZBEWBQrFWx5p2y9fP1FzYqylJsut5vN0rj2NrHCSSMNXHz4RnDnwAihRbH8ht-E4ucYQWt_fy8D2E72bX8ULEmqEJy4CM7X9jdSKBSGOmT-IagDuo6XjSObqVeWEnyrrpn4DtUE364bvUCg2gFpQL8XnJJqwPp8dqJJ6AB5gHFsNUuD5pdOI1o8wEp4saUKCpC0UzPCNqDz22ET3kwr2ODvSglulGZb6yfcjU_aBMa_dTTcfn">
+</div>
+<span class="font-label-md text-on-surface text-center">Restaurantes</span>
+</div>
+<!-- Supermercado -->
+<div class="flex flex-col items-center gap-sm group cursor-pointer bento-card">
+<div class="category-bubble rounded-full bg-[#E8F5E9] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform overflow-hidden">
+<img class="w-2/3 h-2/3 object-contain" data-alt="Stylized high-quality 3D icons of fresh groceries, including a milk carton, an apple, and a paper bag. The colors are fresh greens and whites, lit with bright, morning daylight in a studio setting. Minimalist and clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1KlqaU8QeRRcGoFbR7jv3zIA2lvQq4ATYXUWwTeDj6-MbEa0PFwVvkyjpS7hp9A2coFXt2GLLy6Jkm8j7fnVRfAO7BeSebUeAzH5fGEdK8NA00bA4BzNJml9v5KYIgAHTt6pNOKOcydTxiQHsUbvFL18G_r3M0D0vTron2a37ORkYBxG8YJXgJ2p6LyDnwKmAWvUiasZeRRY3yZwWUSsc8xZXURbYT0dVrbKGQiEi_2bGp_h8VE3DqSYmDumi8GvhHN_Y0fweZdS_">
+</div>
+<span class="font-label-md text-on-surface text-center">Supermercado</span>
+</div>
+<!-- Farmacia -->
+<div class="flex flex-col items-center gap-sm group cursor-pointer bento-card">
+<div class="category-bubble rounded-full bg-[#FFEBEE] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform overflow-hidden">
+<img class="w-2/3 h-2/3 object-contain" data-alt="A premium 3D render of health and wellness products, featuring a minimalist first aid kit and vitamin bottles. The lighting is sterile yet inviting, with soft shadows on a clean pastel red surface. High-contrast minimalist design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGVEyOLox-gGwMvCMKkj_iTJNa3j3NvhnExY8KtLhW435QWE2pINultS9AnViyANBxccK8NBHsO1Cz5IJmrTTpCBtpeZMG_vT3s-0mvVU5h_7QmtI-S-Rl90QxEuXRAuH1m3k3FRrQad0_4uKarl_C9kWclB2xDtKu-YyRiPQVrHLgfOv1Rzc34-Cdp2w4gMczjyHSr23P3nwqeGvfwrlS_dEo9gXT2ipdGuDKudZl3iHb654d7peS3qPOWXnteE0-OhKIp_vZwGUB">
+</div>
+<span class="font-label-md text-on-surface text-center">Farmacia</span>
+</div>
+<!-- Tiendas -->
+<div class="flex flex-col items-center gap-sm group cursor-pointer bento-card">
+<div class="category-bubble rounded-full bg-[#FFF3E0] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform overflow-hidden">
+<img class="w-2/3 h-2/3 object-contain" data-alt="Vibrant 3D shopping bags and a gift box floating in a warm, sunlit space. The scene uses high-energy orange accents and professional product lighting. Airy and bouncy visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsKWEZKEpxzIEgBprlyZ5DLukLUNml46ICO97kJEmgveI4EyS9z9O9Q0H0bdEm_i8FZYVJWiec4VG-p1wJeeRKDS7_fK67Op_VAW7mbzT6nV3HvBsQeLqObmXuPhu7CwR5NZfaosydZWO9Dzmsiuqe8oJ0lcx7Z_4yqwa8djozd14IlWfLHaYz3DNSJ6ONsqbiYle6w9qULlBWFHB2y0Udr0tDlF0lecTEsvk8roPSWldq78dOxag1_6ElUUTjMWdqJB9SGDrYegNU">
+</div>
+<span class="font-label-md text-on-surface text-center">Tiendas</span>
+</div>
+<!-- Glovo Express -->
+<div class="flex flex-col items-center gap-sm group cursor-pointer bento-card">
+<div class="category-bubble rounded-full bg-secondary-container flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform overflow-hidden">
+<img class="w-2/3 h-2/3 object-contain" data-alt="A fast-moving delivery rocket or a sleek 3D stopwatch icon representing ultra-fast delivery. Cool blue and charcoal tones with high-contrast highlights. Dynamic motion-blur effects in a minimalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH4oYMxd3y5ASUV3W--nfT4n81LMuthMOGFQES1xcXi6tDvoaOk6neXvz7UeAZGzee9Yxe-mBOS8b700eeYfqcG_Egh42q0QVcgw4Vv54COMc70Si_SxsQWRxyBzPwiHcuhWbmGW_eEfrDac_a_O0W_bYuT6WDtm7i1kxY2FlwWAkCGu9d0DMSyli5rmaRXl6VWQO3a4hc6mT0803jXBjd79GNxVh-8bsmCTJo7OVCuL_l3wgXsVjwedB9MRuqRYGwH7LMOL4HqUsk">
+</div>
+<span class="font-label-md text-on-surface text-center">Glovo Express</span>
+</div>
+</div>
+</section>
+<!-- Promotions Section -->
+<section class="mb-xl">
+<div class="px-margin-mobile flex justify-between items-end mb-md">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-surface">Promotions à ne pas manquer</h2>
+<button class="text-primary font-label-md">Tout voir</button>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-gutter px-margin-mobile">
+<!-- Promo 1 -->
+<div class="min-w-[85vw] md:min-w-[400px] h-48 rounded-2xl relative overflow-hidden flex-shrink-0 bento-card shadow-md">
+<div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10"></div>
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A wide shot of gourmet sushi rolls arranged artfully on a dark slate board. Bright studio lighting catches the texture of the rice and fresh fish. The background is a minimalist, high-end restaurant interior with a sophisticated charcoal palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjTLq_GbHUN3ChpZD8iavJByXk7qNruuxnrqCgrBUq52OTUwCZjNbnjcY6bSKK534v7gcSCfJE4QBquSoSZmXBl5j97204D6T8Jk9vxBhOY7y-lxw22AJKkAzb2TinPk562uxCnePlSh0L5qpVKD4Goy8oAM9ZTKu0m-x3vUygXfspXZYwBrOH4KaNoHkYau0VT6895GGvpdoJXjLiYmhNSuufrelEe34bHNlGRt5e8cNhnzQorgK1_4boSPHoSJdCbIQDzof2sXe_')"></div>
+<div class="relative z-20 h-full flex flex-col justify-center p-md text-white">
+<span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-1 rounded-full w-fit mb-2">OFFRE SPÉCIALE</span>
+<h3 class="font-headline-md mb-xs">-50% sur votre 1ère commande</h3>
+<p class="text-label-sm opacity-90">Valable sur une sélection de sushis</p>
+</div>
+</div>
+<!-- Promo 2 -->
+<div class="min-w-[85vw] md:min-w-[400px] h-48 rounded-2xl relative overflow-hidden flex-shrink-0 bento-card shadow-md">
+<div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10"></div>
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A stack of golden, crispy fried chicken burgers with melting cheese and fresh lettuce. Warm, energetic yellow lighting highlights the textures. The scene is shot from a low angle to appear massive and appetizing. Urban demographic aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkplfuApL2dFJYVnWU90l8-AhWiZrM3q8acL49nXSdvAfOEq0PH-RK7zQxXn_NPBUKSIGosEy-ziGFqj_JgCujPZdmmOG8tvDa2qxFZ6-qAje6JsOXAm2GamiCbS7_lte9YN9Wjt8etTexhp0WXc05nuaSi1Ttju5aEuNVXF5futTugKkZXCsykfteGAolUjODNfqy3lQB-lFpQfeD8f6CqlIF_y_KQufseMqBq7l5Is52MCgODveLsl7LZanDAFBs8WikHmzVjJoR')"></div>
+<div class="relative z-20 h-full flex flex-col justify-center p-md text-white">
+<span class="bg-tertiary text-on-tertiary text-[10px] font-bold px-2 py-1 rounded-full w-fit mb-2">LIVRAISON GRATUITE</span>
+<h3 class="font-headline-md mb-xs">Le meilleur du Burger</h3>
+<p class="text-label-sm opacity-90">Frais de port offerts dès 15€</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Rated Section -->
+<section class="px-margin-mobile mb-xl">
+<div class="flex justify-between items-end mb-md">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-surface">Les mieux notés</h2>
+<div class="flex gap-xs">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Restaurant Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-sm shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A close-up high-resolution photo of a gourmet Italian pizza with buffalo mozzarella and fresh basil leaves. The lighting is soft and natural, emphasizing the char on the crust. Minimalist high-contrast background with soft shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6iY-RvrYh3hQo42qi1otBpjG3ix1TIYkk2K0_IGWz9odygBo1KgvsYt0CXZNyRpczSFJSnHsXyB-DWa_CCc7O2JdwIHne7YU1OYDO8coTuNo6p7XazChrh7jm0W8WXpgdu5Uaqps0WPRm78BRNP7oAnsWbBE5Ec3lqlMREUJ2Ipe-NDHoC4ycp0V4yrPcBmGlf1qI1nt6hYeNZS_bVWCx8XrQMzR3fDK9yd6uGbIimV8OBLAlDBvHCf-ZMqL94F3VJLKuxNENKTuY">
+<div class="absolute bottom-3 left-3 bg-white/95 px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm text-[#FFC244]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-on-surface">4.8</span>
+</div>
+<div class="absolute top-3 right-3 bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Populaire</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-on-surface">Pizza di Mama</h3>
+<p class="text-label-sm text-on-surface-variant italic">Italien • Pizza • Gourmet</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-label-sm">20-30 min</span>
+</div>
+</div>
+</div>
+<!-- Restaurant Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-sm shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vibrant poke bowl filled with fresh salmon, avocado slices, edamame, and mango. The shot is high-angle with clean, bright, and airy lighting. The aesthetic is healthy, modern, and high-end urban lifestyle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxt9bzapvMyih5oDPbyVCDvzm4sI7VdIlIUK0JAo7kDa7U84ScN5qMVo8fFY6bYDASmMg3r1d6gBgAu4jX79GXm9KsMa3gDFwq-2gvhCaHzI8SnxR8trhn15tA1mdgS4kWSevCelvjo9m_62vRk7e9ihs_kcM6nrz58YxMcYZpJkHvVwt0spuHIbd4v895iFlzR0Diclc-s5OfzCnyDahdVX3-R1Aumr46-lXv41_oKi9KiNolZuDeBfvtATjUMOGQAVun8x4kfOnn">
+<div class="absolute bottom-3 left-3 bg-white/95 px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm text-[#FFC244]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-on-surface">4.9</span>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-on-surface">Poke House</h3>
+<p class="text-label-sm text-on-surface-variant italic">Healthy • Bowl • Poisson</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-label-sm">15-25 min</span>
+</div>
+</div>
+</div>
+<!-- Restaurant Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-sm shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A decadent dark chocolate lava cake with a molten center, served on a white porcelain plate. High-contrast lighting creates dramatic highlights on the chocolate. Sophisticated minimalist setting, professional pastry photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfhSr2U8FpoKuIEymvhvutTOBBY1qrq87Tnkjrw4wT1s9ZUls_owQnZjxbmwini1yYWtNYVN0_CnTFQIdgR7HxLJShb-kf9z26p6-BkWli3HYLoN_GWAI9KKQkXhYtpfIR0Di7qpMw7lME5wtHU6gJY4qE-6xtuZ_HZcUNZ9c1av1Yx50NN4pFj-s8nf_UffDe4bfZTX4mvgmTMyaIoV_FbRzNSyZ-tGmlptHgHkIH0ve3Oi0KF6GMrb2E1nvZv8D1J7n3CL1Aw0jq">
+<div class="absolute bottom-3 left-3 bg-white/95 px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm text-[#FFC244]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-on-surface">4.7</span>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-on-surface">Le Petit Pâtissier</h3>
+<p class="text-label-sm text-on-surface-variant italic">Desserts • Chocolat • Français</p>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-label-sm">30-45 min</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface dark:bg-on-surface shadow-[0_-8px_24px_rgba(0,0,0,0.12)] flex justify-around items-center h-20 px-4 pb-safe">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 transition-all duration-300 ease-out active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<!-- Search -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:bg-surface-variant dark:hover:bg-on-secondary-fixed-variant p-2 rounded-full transition-all duration-300 ease-out active:scale-90" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:bg-surface-variant dark:hover:bg-on-secondary-fixed-variant p-2 rounded-full transition-all duration-300 ease-out active:scale-90" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:bg-surface-variant dark:hover:bg-on-secondary-fixed-variant p-2 rounded-full transition-all duration-300 ease-out active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Horizontal scroll snap behavior could be added here if needed for desktop
+            const promoContainer = document.querySelector('.hide-scrollbar');
+            
+            // Add subtle parallax or animation on scroll
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                // Add logic for header shadow or similar atmospheric effects
+            });
+
+            // Smooth click feedback for category bubbles
+            const bubbles = document.querySelectorAll('.bento-card');
+            bubbles.forEach(bubble => {
+                bubble.addEventListener('click', () => {
+                    bubble.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        bubble.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+
+
+</body></html>

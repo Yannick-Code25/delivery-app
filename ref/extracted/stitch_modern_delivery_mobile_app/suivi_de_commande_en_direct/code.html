@@ -1,0 +1,151 @@
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary": "#7c5800", "on-surface": "#191c1d", "background": "#f8fafb", "surface": "#f8fafb", "on-primary": "#ffffff", "surface-container": "#eceeef", "on-surface-variant": "#504534" }, "borderRadius": { "DEFAULT": "0.25rem", "full": "9999px" }, "spacing": { "margin-mobile": "20px", "sm": "12px", "md": "24px" }, "fontFamily": { "headline-md": ["Montserrat"], "body-md": ["Plus Jakarta Sans"] }, "fontSize": { "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }] } } } }</script><style>@layer base { .pt-safe { padding-top: env(safe-area-inset-top); } } </style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center gap-md"><button class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container" onclick="history.back()"><span class="material-symbols-outlined text-on-surface">arrow_back</span></button><h1 class="font-headline-md text-headline-md text-on-surface truncate">Tracking Live</h1></div></header><main class="pt-16 min-h-screen bg-surface"><div class="flex flex-col w-full">
+<!-- Map Section: Taking up a generous portion of the viewport but staying contained -->
+<div class="relative w-full h-[397px] overflow-hidden">
+<div class="w-full h-full bg-surface-container animate-pulse" data-location="Paris, France" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDP1f_PnIwg8rjqyPd2nvXm-49AR0L9fXBNZwDNCM7jYDTUGq5ARtDDt-mSHcI1vIrr0x5V63Wzb-mX1DlceSG4qz71caDOyTKfiZgm1MZuuzrwEVB29FujT9v1lp3Wzwpg7yjSL5yjteGuSHzoYlU6X4hrKwJYJZLuL072Gt1bkiJpPqvVlGe4kcOpCArcftAcm8aF9Lcl8dnSogVAFig-W1vb7S5QHJktoaH4VZLYFiJ9yxT1_I9iESg1YTaA6-Z4nStBRazzl9NE')"></div>
+<!-- Animated Overlay Elements for the Map -->
+<div class="absolute inset-0 pointer-events-none">
+<!-- Delivery Path (Simulated) -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 400 600">
+<path class="opacity-40" d="M 100 500 Q 150 400 300 350 T 250 150" fill="none" stroke="#7c5800" stroke-dasharray="8 12" stroke-width="4">
+<animate attributename="stroke-dashoffset" dur="3s" from="100" repeatcount="indefinite" to="0"></animate>
+</path>
+</svg>
+<!-- Courier Marker -->
+<div class="absolute transition-all duration-1000 ease-in-out" id="courier-marker" style="left: 65%; top: 55%;">
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/20 rounded-full animate-ping"></div>
+<div class="bg-primary p-2 rounded-full shadow-xl">
+<span class="material-symbols-outlined text-on-primary text-[24px]" style="font-variation-settings: 'FILL' 1;">directions_bike</span>
+</div>
+</div>
+</div>
+<!-- Destination Marker -->
+<div class="absolute left-[25%] top-[25%]">
+<div class="bg-inverse-surface p-2 rounded-full shadow-xl">
+<span class="material-symbols-outlined text-inverse-on-surface text-[20px]" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+</div>
+</div>
+<!-- Floating Quick Status -->
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+<div class="w-2 h-2 bg-tertiary rounded-full animate-pulse"></div>
+<span class="font-label-md text-label-md text-on-surface">En direct</span>
+</div>
+</div>
+<!-- Sliding Content Panel -->
+<div class="relative -mt-8 bg-surface-container-lowest rounded-t-[32px] shadow-[0_-8px_32px_rgba(0,0,0,0.08)] px-margin-mobile pt-8 pb-12 z-10">
+<!-- Handlebar Decoration -->
+<div class="absolute top-3 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-surface-container-highest rounded-full"></div>
+<!-- Courier Info Section -->
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-sm">
+<div class="relative">
+<div class="w-16 h-16 rounded-2xl overflow-hidden shadow-md">
+<img class="w-full h-full object-cover" data-alt="A friendly male delivery courier named Marc, wearing a professional yellow uniform, smiling warmly, high-quality portrait photography, soft natural lighting, urban background blurred, modern and professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhUYRuIgv_wkcOhRLukzsx0uayrMESuvO8vQnD0H-fV17aAzMtb5rhP3H-U6O300rqlzL40iDmfvwd0REoz9x3aqTsbVrMSE5zd4bJ-_wPvU1u-g9-fMhzWxhfnT0fQ2Jyn7SV6FquuXDCbPfqwh2EROMNjKaaWD81ZYiLOFXW9qRapmMy2pOPXfywkDwu1eNSEiJj2d-S2vB0XBu6X0AhiePXQaevzp9xPjSqEVhqp4NWpsamMWE0RKZOqs6rPCh0n7BAUqzG39xz"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-primary-container text-on-primary-container w-6 h-6 rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="min-w-0">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Votre livreur</p>
+<h2 class="font-headline-md text-headline-md text-on-surface">Marc est en route</h2>
+<p class="font-body-md text-body-md text-tertiary font-semibold">Arrivée dans 8 min</p>
+</div>
+</div>
+<button class="w-14 h-14 bg-surface-container rounded-2xl flex items-center justify-center text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">call</span>
+</button>
+</div>
+<!-- Progress Stepper -->
+<div class="flex flex-col gap-sm mb-lg">
+<div class="flex items-center justify-between px-xs">
+<!-- Step 1: Done -->
+<div class="flex flex-col items-center gap-xs flex-1 opacity-40">
+<div class="h-1.5 w-full bg-primary rounded-full"></div>
+<span class="font-label-sm text-label-sm text-center">Préparée</span>
+</div>
+<div class="w-2"></div>
+<!-- Step 2: Active -->
+<div class="flex flex-col items-center gap-xs flex-1">
+<div class="h-1.5 w-full bg-primary rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-surface-container-lowest/30 animate-[shimmer_2s_infinite]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-center font-bold text-primary">En livraison</span>
+</div>
+<div class="w-2"></div>
+<!-- Step 3: Pending -->
+<div class="flex flex-col items-center gap-xs flex-1 opacity-20">
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full"></div>
+<span class="font-label-sm text-label-sm text-center">Arrivée</span>
+</div>
+</div>
+</div>
+<!-- Order Summary Card -->
+<div class="bg-surface-container-low p-md rounded-3xl flex items-center justify-between mb-md">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 bg-surface-container-highest rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">receipt_long</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Commande #4829</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">2 articles • 24,50 €</p>
+</div>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline">Détails</button>
+</div>
+<!-- Tips / Interaction Section -->
+<div class="flex flex-col gap-sm">
+<button class="w-full py-4 bg-primary text-on-primary rounded-2xl font-headline-md text-headline-md shadow-lg shadow-primary/20 active:scale-[0.98] transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">volunteer_activism</span>
+                Ajouter un pourboire
+            </button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant px-md">
+                Marc fait de son mieux pour vous livrer rapidement et en toute sécurité.
+            </p>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interaction for the courier marker movement
+    const marker = document.getElementById('courier-marker');
+    let progress = 0;
+    
+    function moveCourier() {
+        const points = [
+            { l: '65%', t: '55%' },
+            { l: '55%', t: '50%' },
+            { l: '45%', t: '40%' },
+            { l: '35%', t: '35%' },
+            { l: '28%', t: '28%' }
+        ];
+        
+        let step = 0;
+        const interval = setInterval(() => {
+            if (step >= points.length) {
+                step = 0; // Reset for demo loop
+            }
+            marker.style.left = points[step].l;
+            marker.style.top = points[step].t;
+            step++;
+        }, 4000);
+    }
+
+    moveCourier();
+
+    // Keyframes for the custom shimmer animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    `;
+    document.head.appendChild(style);
+</script></main></body></html>

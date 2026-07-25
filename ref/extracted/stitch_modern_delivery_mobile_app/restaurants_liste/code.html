@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Restaurants - Glovo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e1e3e4",
+                    "on-surface": "#191c1d",
+                    "on-tertiary-container": "#00624f",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#c1c7d3",
+                    "inverse-on-surface": "#eff1f2",
+                    "primary": "#7c5800",
+                    "surface": "#f8fafb",
+                    "background": "#f8fafb",
+                    "on-primary-fixed": "#271900",
+                    "surface-container-low": "#f2f4f5",
+                    "outline": "#827562",
+                    "secondary-container": "#dde2f0",
+                    "on-background": "#191c1d",
+                    "inverse-primary": "#f9bd3f",
+                    "on-tertiary-fixed-variant": "#005140",
+                    "on-tertiary-fixed": "#002018",
+                    "on-secondary-fixed-variant": "#414752",
+                    "surface-container-high": "#e6e8e9",
+                    "on-secondary-fixed": "#161c25",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#715000",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#ffc244",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#d4c4ae",
+                    "secondary-fixed": "#dde2f0",
+                    "tertiary-fixed-dim": "#60dbba",
+                    "primary-fixed": "#ffdea6",
+                    "primary-fixed-dim": "#f9bd3f",
+                    "surface-tint": "#7c5800",
+                    "inverse-surface": "#2e3132",
+                    "surface-container": "#eceeef",
+                    "surface-bright": "#f8fafb",
+                    "on-surface-variant": "#504534",
+                    "tertiary-fixed": "#7ef8d5",
+                    "surface-dim": "#d8dadb",
+                    "tertiary-container": "#66e1bf",
+                    "on-error": "#ffffff",
+                    "secondary": "#595f6a",
+                    "on-secondary-container": "#5f6570",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#006b56",
+                    "on-primary-fixed-variant": "#5e4200",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "md": "24px",
+                    "margin-desktop": "120px",
+                    "lg": "40px",
+                    "gutter": "16px",
+                    "base": "8px",
+                    "xl": "64px",
+                    "xs": "4px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-badge {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-sm h-16 flex items-center justify-between px-margin-mobile">
+<div class="flex items-center gap-base">
+<button class="transition-transform active:scale-95 duration-200 hover:opacity-80">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tighter ml-base">Glovo</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="transition-transform active:scale-95 duration-200 hover:opacity-80">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+<button class="transition-transform active:scale-95 duration-200 hover:opacity-80">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+</button>
+</div>
+</header>
+<main class="pt-20 pb-28 min-h-screen">
+<!-- Filter Section -->
+<section class="sticky top-16 z-40 bg-surface/95 backdrop-blur-sm pt-base pb-md border-b border-surface-variant/30">
+<div class="flex gap-sm overflow-x-auto px-margin-mobile hide-scrollbar">
+<button class="flex items-center gap-xs bg-primary-container text-on-primary-container px-4 py-2 rounded-full font-label-md text-label-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                    Filtres
+                </button>
+<button class="whitespace-nowrap bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-md text-label-md hover:bg-surface-variant transition-all active:scale-95">
+                    Ouvert
+                </button>
+<button class="whitespace-nowrap bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-md text-label-md hover:bg-surface-variant transition-all active:scale-95">
+                    Livraison gratuite
+                </button>
+<button class="whitespace-nowrap bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-md text-label-md hover:bg-surface-variant transition-all active:scale-95 flex items-center gap-xs">
+                    Note 4+
+                </button>
+<button class="whitespace-nowrap bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-md text-label-md hover:bg-surface-variant transition-all active:scale-95 flex items-center gap-xs">
+                    Cuisine
+                    <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Content Feed -->
+<section class="px-margin-mobile mt-md space-y-md max-w-2xl mx-auto">
+<!-- Restaurant Card 1 -->
+<article class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] active:scale-[0.98]">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A professional food photography shot of a gourmet burger with melting cheese, fresh lettuce, and crispy bacon, set against a dark moody background with warm amber lighting. The style is high-contrast minimalist, emphasizing the texture and freshness of the ingredients in a high-end restaurant setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9V62cmLPWzo5ua_vofEOlri9wP4_-P-3bujcdW2z1U6JXl7XhOd-pNEXJUFA_f1eIMK6HyM3qDrsSBiQng_PKb4bcRZBqCZFfxCIwNcmcZMZka1EzS0hw1QTlqPVJVnWWEwyCHGrehVz7QH2rWITEbkFEINx2yk8rQJQ1VTQvJPZF7LoojmX0OeDXkMsBz3lN-n2XYRapQ7UZIvpCTo5iD5C7prfUpznRZXwnPtnYXw1gpC0p8b3uehWPNQv_uUlyatv03BarcEYm"/>
+<div class="absolute top-sm right-sm glass-badge px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.8</span>
+</div>
+<div class="absolute bottom-sm left-sm glass-badge px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface shadow-sm">
+                        25-35 min
+                    </div>
+</div>
+<div class="p-md flex items-start gap-md">
+<div class="h-14 w-14 rounded-full border-2 border-white shadow-md -mt-10 relative z-10 overflow-hidden bg-white">
+<img class="w-full h-full object-cover" data-alt="A minimalist vector logo for a high-end burger restaurant named 'Boulangerie &amp; Co'. The logo features clean, modern typography in charcoal gray on a vibrant yellow circular background, evoking a sense of speed and joy consistent with the urban delivery brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaSDX5SAzmpAWscqELUS9hp8OCPZvUfrWhr0bDeQUvYSmwTKdMYysBFjykgCx0qRE7zUcZ05Z8dm1upTiW2iS2ZvFfgpxwqn6DdOxoNqjewT5WhiXdhfvtI2kt0lNNP_9h7LT-y0ELJS9aHTAzOGeQSkINRTx-3cpuuXzNEknLzC_hcOVuxY9v4zxxYxQlt0lTQ-OWjd0CemWQNbWPBQuHzn4gOAacyIg_jwsGDtusMeSVcoEmnqgezPwwffy8VwNzYMd7GfT8Xr5a"/>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">The Burger Lab</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Américain • Burgers • Grill</p>
+<div class="flex items-center gap-xs mt-xs text-on-tertiary-container font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">delivery_dining</span>
+<span>Livraison 1,90 €</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Restaurant Card 2 -->
+<article class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] active:scale-[0.98]">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A vibrant and colorful overhead shot of diverse sushi rolls arranged on a black slate platter. Bright green wasabi, pink pickled ginger, and fresh orange salmon provide high-energy accents. The lighting is bright and airy, typical of a premium modern sushi bar, with high contrast and clean white highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFHz4Ogruxvzyl9HVoK6ajp7gq8SIP_odUxc6sMqApABF3-zpZGVBJCRFuMMSGkm7K77_uh4CKgYqEiMJJfFvLl_RJAVjfGifzdMiWYmLx1HgZ_487MMEJovD3PkTcLGPFTx_ICqoy3b8q4_qQT81TxivyFuAhxp4tuDp8Nou3ElkDWvPaTSkrwVA2hQEXr1pkpJGsVRfRPaF4expVynVgnTBWgjerQpyzt6cSqprx99dGokeP6W71eLADAyQnfyeTn_GIHvhwCUFQ"/>
+<div class="absolute top-sm right-sm glass-badge px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.5</span>
+</div>
+<div class="absolute bottom-sm left-sm glass-badge px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface shadow-sm">
+                        15-25 min
+                    </div>
+</div>
+<div class="p-md flex items-start gap-md">
+<div class="h-14 w-14 rounded-full border-2 border-white shadow-md -mt-10 relative z-10 overflow-hidden bg-white">
+<img class="w-full h-full object-cover" data-alt="A sophisticated minimalist circular logo for 'Sushi Master'. The design uses a bold red circle with a stylized white fish silhouette, representing fresh Japanese cuisine. The aesthetic is clean and professional, using high contrast and massive white space around the primary icon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZBSi33olIYICpym2HKGbxhjoqSocAKBTqrJeCuELcg0r9kEX3jXZAIQDdOel1h0Xt99LDdrZ2TqshuJC2xggjh-Q_vStnuG9eKvOqTb2b4PX9OVvFFDDQXu_yE7fqnoKcUc4duilOx85Np1rGPVIVolPpZg-2sCb4Z-eiCAs-p94KdN-_vbz5s-W3McTMG-R_aMaCZ0rSk-ybz9NLzJYFRFUOr6otPyrQe7zS_Tp0CXskk1fgm3knc4hLejKsw1oXnEaMzOwLU6u0"/>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Sushi Master</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Japonais • Sushi • Poké</p>
+<div class="flex items-center gap-xs mt-xs text-on-tertiary-container font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="text-tertiary">Livraison gratuite</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Restaurant Card 3 -->
+<article class="group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] active:scale-[0.98]">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A steaming hot Neapolitan pizza with melted mozzarella, fresh basil leaves, and a blistered crust, served on a rustic wooden table. The lighting is warm and inviting, emphasizing the speed and reliability of fresh delivery. The style is professional and high-end, focusing on high-quality food textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe0HTQbSSqNuKVhiQWrbKRH-hsBaxpe0wVLTcpMDOOigZG9l1cWL-5-KXI9KJvDVwe66CGpacqsFIoEI6nquqNWZHJ3wv0dH5U537eQOA6zsISAsMmGBWSl0yNwX-t1nOy5KBzWoJt7pdAvRMMbOx8H6IuOY0L6UUf2aAen_eg79jcOdoIkO76R6FhKP8EnQRqCrvnVIZOiRFV3EBMSfg26R1bSTNn-Su0v2RF_kLqsfEW96Gf1TmpyKq8PfI_cxIgf9fgeMkvDaQ9"/>
+<div class="absolute top-sm right-sm glass-badge px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.9</span>
+</div>
+<div class="absolute bottom-sm left-sm glass-badge px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface shadow-sm">
+                        30-40 min
+                    </div>
+</div>
+<div class="p-md flex items-start gap-md">
+<div class="h-14 w-14 rounded-full border-2 border-white shadow-md -mt-10 relative z-10 overflow-hidden bg-white">
+<img class="w-full h-full object-cover" data-alt="A clean, charcoal and yellow circular logo for 'Pizzaria Milano'. It features a minimalist pizza slice icon and bold, uppercase sans-serif lettering. The design feels approachable and urban, reflecting a premium delivery service brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1gSC-RAxilRCi0kb7j5uusiOrHDK9zWM5pxIyuHYWZvulpIu05lr80vltZd01Tks46a2XUmpI8L8qOtx6AJ2xwRfDg6ejDRwC8Aq79MK4SmdK-qLtNl-j7mMmbbF1dUl_EsmcfBzvY07q-kkx8Bf-J_eFlY__cj9UxzkeIcURznCVOL2fEUUSPdQe655HUQtSdz7f9GroQmUGIzdxUITn3dOIf9qjKIsRgihauZ_c7G6iz04AkgNbIoCK3C1nJnRqWFLIIRMViTeE"/>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Pizzaria Milano</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Italien • Pizza • Pasta</p>
+<div class="flex items-center gap-xs mt-xs text-on-tertiary-container font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">delivery_dining</span>
+<span>Livraison 2,50 €</span>
+</div>
+</div>
+</div>
+</article>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface shadow-[0_-8px_24px_rgba(0,0,0,0.12)] rounded-t-xl md:hidden">
+<div class="flex justify-around items-center h-20 px-4 pb-safe w-full">
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all duration-300 ease-out active:scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-variant transition-all duration-300 ease-out active:scale-90 px-4 py-1 rounded-full">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-variant transition-all duration-300 ease-out active:scale-90 px-4 py-1 rounded-full">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-variant transition-all duration-300 ease-out active:scale-90 px-4 py-1 rounded-full">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</div>
+</nav>
+<!-- Floating Action Button for Cart (The "View Cart" signature) -->
+<button class="fixed bottom-24 right-margin-mobile z-40 bg-primary-container text-on-primary-container h-14 px-6 rounded-full shadow-lg flex items-center gap-base transition-transform active:scale-95 hover:shadow-xl">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-md text-label-md">Voir le panier • 14,50 €</span>
+</button>
+<script>
+        // Simple Micro-interactions for chips
+        const chips = document.querySelectorAll('button.bg-surface-container-high');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                const isActive = chip.classList.contains('bg-primary-container');
+                if (isActive) {
+                    chip.classList.remove('bg-primary-container', 'text-on-primary-container');
+                    chip.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+                } else {
+                    chip.classList.add('bg-primary-container', 'text-on-primary-container');
+                    chip.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+                }
+            });
+        });
+
+        // Scroll listener for Top Bar elevation
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

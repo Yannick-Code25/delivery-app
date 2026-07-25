@@ -1,0 +1,125 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "inverse-on-surface": "#eff1f2", "on-tertiary-fixed": "#002018", "on-error-container": "#93000a", "on-error": "#ffffff", "on-tertiary-container": "#00624f", "on-primary": "#ffffff", "surface-variant": "#e1e3e4", "on-primary-fixed-variant": "#5e4200", "on-primary-fixed": "#271900", "secondary-container": "#dde2f0", "on-secondary-fixed": "#161c25", "outline-variant": "#d4c4ae", "primary-fixed": "#ffdea6", "secondary-fixed-dim": "#c1c7d3", "surface-container-highest": "#e1e3e4", "surface-container-lowest": "#ffffff", "on-background": "#191c1d", "secondary-fixed": "#dde2f0", "tertiary-container": "#66e1bf", "surface-dim": "#d8dadb", "secondary": "#595f6a", "surface-tint": "#7c5800", "surface-bright": "#f8fafb", "surface": "#f8fafb", "on-surface": "#191c1d", "on-primary-container": "#715000", "primary": "#7c5800", "on-surface-variant": "#504534", "on-tertiary-fixed-variant": "#005140", "inverse-primary": "#f9bd3f", "surface-container": "#eceeef", "on-secondary": "#ffffff", "surface-container-low": "#f2f4f5", "on-secondary-container": "#5f6570", "tertiary-fixed": "#7ef8d5", "primary-fixed-dim": "#f9bd3f", "error-container": "#ffdad6", "tertiary-fixed-dim": "#60dbba", "error": "#ba1a1a", "background": "#f8fafb", "inverse-surface": "#2e3132", "primary-container": "#ffc244", "outline": "#827562", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "xl": "64px", "base": "8px", "margin-desktop": "120px", "margin-mobile": "20px", "sm": "12px", "md": "24px", "xs": "4px", "lg": "40px", "gutter": "16px" }, "fontFamily": { "label-md": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-lg": ["Montserrat"], "headline-lg-mobile": ["Montserrat"], "body-md": ["Plus Jakarta Sans"], "headline-md": ["Montserrat"], "body-lg": ["Plus Jakarta Sans"], "headline-xl": ["Montserrat"] }, "fontSize": { "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }] } } } }</script><style>@layer base{body{-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}} .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-background text-on-surface font-body-md"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><span class="font-headline-md text-headline-md text-on-surface">Missions</span><div class="flex items-center gap-sm"><button class="w-11 h-11 flex items-center justify-center"><span class="material-symbols-outlined text-on-surface-variant">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary-container text-[18px]">person</span></div></div></div></header><main class="pt-16 min-h-screen bg-surface"><div class="flex flex-col w-full p-margin-mobile">
+<!-- Status Bar / Context -->
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></div>
+<span class="font-label-md text-label-md text-tertiary">Online &amp; Searching</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ID: #BBL-9921</span>
+</div>
+<!-- New Order Card -->
+<div class="relative bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden animate-in fade-in zoom-in duration-500">
+<!-- Earnings Header -->
+<div class="bg-primary-container p-md flex justify-between items-center">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-primary-fixed-variant uppercase tracking-wider">Estimated Earnings</span>
+<span class="font-headline-xl text-headline-xl text-on-primary-fixed">€6.50</span>
+</div>
+<div class="relative w-16 h-16 flex items-center justify-center">
+<!-- SVG Countdown Circle -->
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle class="text-on-primary-container/20" cx="32" cy="32" fill="none" r="28" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-on-primary-container transition-all duration-1000 linear" cx="32" cy="32" fill="none" id="countdown-circle" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="0" stroke-width="4"></circle>
+</svg>
+<span class="font-headline-md text-headline-md text-on-primary-container" id="countdown-text">45</span>
+</div>
+</div>
+<!-- Map Snippet -->
+<div class="relative h-48 w-full">
+<div class="w-full h-full bg-surface-variant" data-location="Plaza del Sol, Madrid to Calle de Velázquez, Madrid" style=""></div>
+<div class="absolute bottom-sm left-sm right-sm flex gap-xs">
+<div class="bg-surface/90 backdrop-blur-md px-sm py-xs rounded-full shadow-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">navigation</span>
+<span class="font-label-sm text-label-sm text-on-surface">Total: 4.2 km</span>
+</div>
+</div>
+</div>
+<!-- Order Details -->
+<div class="p-md space-y-md">
+<!-- Restaurant -->
+<div class="flex items-start gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[28px]">restaurant</span>
+</div>
+<div class="min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Pick-up</span>
+<h3 class="font-headline-md text-headline-md text-on-surface truncate">Burger Master Central</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">0.8 km away • Ready in 5 min</p>
+</div>
+</div>
+<!-- Divider with "Flow" line -->
+<div class="relative flex justify-center py-xs">
+<div class="absolute left-[24px] top-0 bottom-0 w-px bg-dashed bg-outline-variant" style="background-image: linear-gradient(to bottom, transparent 50%, #d4c4ae 50%); background-size: 1px 8px;"></div>
+</div>
+<!-- Customer -->
+<div class="flex items-start gap-md">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container text-[28px]">home</span>
+</div>
+<div class="min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Drop-off</span>
+<h3 class="font-headline-md text-headline-md text-on-surface truncate">Residential District</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">3.4 km from restaurant</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="p-md pt-0 flex flex-col gap-sm">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-headline-md text-headline-md shadow-lg active:scale-[0.98] transition-transform flex items-center justify-center gap-sm" id="accept-btn">
+        Accept Mission
+        <span class="material-symbols-outlined">bolt</span>
+</button>
+<button class="w-full h-12 bg-transparent text-on-surface-variant font-label-md text-label-md rounded-xl active:bg-surface-container transition-colors">
+        Decline
+      </button>
+</div>
+</div>
+<!-- Decorative Background Glow -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[50%] bg-primary/5 blur-[120px] rounded-full rotate-12"></div>
+</div>
+<script>
+    (function() {
+      let seconds = 45;
+      const textElement = document.getElementById('countdown-text');
+      const circleElement = document.getElementById('countdown-circle');
+      const totalDash = 175.9; // 2 * PI * R (28)
+
+      const timer = setInterval(() => {
+        seconds--;
+        if (seconds <= 0) {
+          clearInterval(timer);
+          seconds = 0;
+        }
+        
+        textElement.innerText = seconds;
+        
+        // Update circle stroke-dashoffset
+        const progress = seconds / 45;
+        circleElement.style.strokeDashoffset = totalDash * (1 - progress);
+
+        if (seconds < 10) {
+          textElement.classList.add('text-error');
+          circleElement.classList.remove('text-on-primary-container');
+          circleElement.classList.add('text-error');
+        }
+      }, 1000);
+
+      document.getElementById('accept-btn').addEventListener('click', function() {
+        this.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Connecting...';
+        this.classList.add('opacity-80');
+        setTimeout(() => {
+          // Visual feedback for transition
+          this.innerHTML = 'Success!';
+          this.classList.replace('bg-primary', 'bg-tertiary');
+        }, 800);
+      });
+    })();
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/80 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16"><a aria-current="page" class="flex flex-col items-center gap-xs text-primary font-semibold" data-path="missions" href="#"><span class="material-symbols-outlined">task_alt</span><span class="font-label-sm text-label-sm">Missions</span></a><a class="flex flex-col items-center gap-xs text-on-surface-variant" data-path="history" href="#"><span class="material-symbols-outlined">history</span><span class="font-label-sm text-label-sm">History</span></a><a class="flex flex-col items-center gap-xs text-on-surface-variant" data-path="profile" href="#"><span class="material-symbols-outlined">person</span><span class="font-label-sm text-label-sm">Profile</span></a></div></nav></body></html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "surface-container": "#eceeef",
+                        "primary-fixed-dim": "#f9bd3f",
+                        "tertiary-fixed": "#7ef8d5",
+                        "secondary-fixed": "#dde2f0",
+                        "surface-dim": "#d8dadb",
+                        "primary-fixed": "#ffdea6",
+                        "tertiary-container": "#66e1bf",
+                        "surface-container-high": "#e6e8e9",
+                        "primary": "#7c5800",
+                        "on-secondary-fixed-variant": "#414752",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-container": "#00624f",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f8fafb",
+                        "background": "#f8fafb",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "surface-variant": "#e1e3e4",
+                        "outline-variant": "#d4c4ae",
+                        "secondary-fixed-dim": "#c1c7d3",
+                        "inverse-on-surface": "#eff1f2",
+                        "on-secondary-container": "#5f6570",
+                        "error-container": "#ffdad6",
+                        "outline": "#827562",
+                        "tertiary": "#006b56",
+                        "on-secondary-fixed": "#161c25",
+                        "on-primary": "#ffffff",
+                        "secondary": "#595f6a",
+                        "on-surface": "#191c1d",
+                        "on-surface-variant": "#504534",
+                        "on-tertiary-fixed-variant": "#005140",
+                        "on-primary-container": "#715000",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#5e4200",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f8fafb",
+                        "on-primary-fixed": "#271900",
+                        "secondary-container": "#dde2f0",
+                        "surface-tint": "#7c5800",
+                        "surface-container-low": "#f2f4f5",
+                        "tertiary-fixed-dim": "#60dbba",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1d",
+                        "on-tertiary-fixed": "#002018",
+                        "inverse-primary": "#f9bd3f",
+                        "primary-container": "#ffc244"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "lg": "40px",
+                        "sm": "12px",
+                        "margin-desktop": "120px",
+                        "xl": "64px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "margin-mobile": "20px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Montserrat"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-line {
+            position: absolute;
+            left: 11px;
+            top: 24px;
+            bottom: -8px;
+            width: 2px;
+            background-color: #eceeef;
+        }
+        .step-line.active {
+            background-color: #7c5800;
+        }
+        .sheet-handle {
+            width: 32px;
+            height: 4px;
+            background-color: #d8dadb;
+            border-radius: 2px;
+            margin: 8px auto 16px;
+        }
+        .springy-tap:active {
+            transform: scale(0.95);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen text-on-surface overflow-x-hidden">
+<!-- Top AppBar -->
+<header class="bg-surface dark:bg-surface-dim shadow-sm w-full sticky top-0 z-40">
+<div class="flex items-center justify-between px-margin-mobile py-sm w-full">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">account_circle</span>
+<h1 class="font-headline-md text-headline-md-mobile text-primary">En ligne</h1>
+</div>
+<button class="font-label-md text-label-md bg-surface-container-high px-4 py-2 rounded-full hover:bg-surface-container-highest transition-colors active:scale-95 duration-150">
+                Hors ligne
+            </button>
+</div>
+</header>
+<main class="flex-grow flex flex-col relative">
+<!-- Interactive Map Section -->
+<div class="relative w-full h-[397px] md:h-[442px] overflow-hidden">
+<div class="w-full h-full bg-surface-container flex items-center justify-center relative" data-alt="A sophisticated digital map UI showing an active delivery route through a modern urban neighborhood. The map features a soft, light-mode color palette with clean white roads and subtle grey buildings. A vibrant yellow dashed line indicates the path between two points marked by high-contrast charcoal and yellow pins. The overall style is professional, airy, and high-tech, fitting a premium logistics dashboard." data-location="Paris" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC7u4XxlQW3amZRH7RqsDvSvbyB49685OAiOva26M9l7Cu_o7hOQisHmYQILUSMthRpJkDqefoqHdxJNeW4WfieB8s71oIfIpTFVZC8xelu3N7rmT75RXogvMDeym49A5qvteLmXZs2SVbqCS64e73tCzAIh5x27wncX6NhWQGzzTgGTlIbRV97iwj-GeBHtX7k3GpovgTBpngiitzGE9EF7-qvI6LvhbCjyjYieutP61BvufKtJj2n6pl-Cyjwxodxp2mxxdR5xcod')">
+<!-- Simulation of active route markers -->
+<div class="absolute top-1/4 left-1/4 animate-pulse">
+<span class="material-symbols-outlined text-primary" style="font-size: 40px; font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div class="absolute bottom-1/3 right-1/4">
+<span class="material-symbols-outlined text-secondary" style="font-size: 40px; font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+</div>
+<!-- Map Overlay Controls -->
+<div class="absolute top-sm right-sm flex flex-col gap-xs">
+<button class="w-10 h-10 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center text-secondary active:scale-90 transition-all">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+<button class="w-10 h-10 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center text-secondary active:scale-90 transition-all">
+<span class="material-symbols-outlined">navigation</span>
+</button>
+</div>
+</div>
+<!-- Delivery Roadmap / Bottom Sheet -->
+<section class="bg-surface-container-lowest rounded-t-[32px] -mt-8 relative z-10 px-margin-mobile pb-xl shadow-[0_-8px_24px_rgba(0,0,0,0.06)] flex-grow">
+<div class="sheet-handle"></div>
+<div class="flex justify-between items-start mb-md">
+<div>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-xs">Commande active</p>
+<h2 class="font-headline-md text-headline-md text-on-surface">#BL-9421</h2>
+</div>
+<div class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-md text-label-md">
+                    2.4 km
+                </div>
+</div>
+<!-- Steps -->
+<div class="space-y-lg mb-lg">
+<!-- Step 1: Restaurant -->
+<div class="flex gap-md relative">
+<div class="relative flex flex-col items-center">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-on-primary" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="step-line active"></div>
+</div>
+<div class="flex-grow pb-md border-b border-surface-container">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-label-md text-label-md text-primary">Récupérer la commande</h3>
+<p class="font-body-md text-body-md font-bold">Le Petit Bistro</p>
+<p class="font-label-sm text-label-sm text-secondary">42 Rue des Gourmets, Paris</p>
+</div>
+<button class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container active:scale-90 transition-all">
+<span class="material-symbols-outlined">call</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Step 2: Customer -->
+<div class="flex gap-md relative">
+<div class="relative flex flex-col items-center">
+<div class="w-6 h-6 rounded-full border-2 border-surface-dim bg-surface flex items-center justify-center z-10">
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-label-md text-label-md text-secondary">Livrer au client</h3>
+<p class="font-body-md text-body-md font-bold">Marc Lefebvre</p>
+<p class="font-label-sm text-label-sm text-secondary">15 Avenue de la République, Paris</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-high inline-block px-2 py-0.5 rounded mt-sm italic">"Sonner à l'interphone 'Lefebvre', 3ème étage"</p>
+</div>
+<button class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container active:scale-90 transition-all">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Detail Cards (Asymmetric Layout) -->
+<div class="grid grid-cols-2 gap-sm mb-lg">
+<div class="bg-surface-container-low p-sm rounded-xl">
+<span class="material-symbols-outlined text-secondary mb-xs">inventory_2</span>
+<p class="font-label-sm text-label-sm text-secondary">Articles</p>
+<p class="font-label-md text-label-md">3 (Menu Burger, Soda, Tarte)</p>
+</div>
+<div class="bg-surface-container-low p-sm rounded-xl">
+<span class="material-symbols-outlined text-secondary mb-xs">schedule</span>
+<p class="font-label-sm text-label-sm text-secondary">Temps estimé</p>
+<p class="font-label-md text-label-md">12 - 15 min</p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="sticky bottom-0 bg-surface-container-lowest pt-sm">
+<button class="w-full bg-primary-container text-on-primary-container font-headline-md text-headline-md py-4 rounded-xl shadow-lg hover:brightness-105 transition-all springy-tap flex items-center justify-center gap-sm">
+                    Commande récupérée
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Shared Component) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface dark:bg-surface-dim shadow-[0_-4px_20px_rgba(0,0,0,0.06)] md:hidden">
+<div class="flex justify-around items-center px-sm py-xs w-full">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions_run</span>
+<span class="font-label-sm text-label-sm">Missions</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 hover:bg-surface-container-highest transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Revenus</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 hover:bg-surface-container-highest transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profil</span>
+</a>
+</div>
+</nav>
+<!-- Interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainButton = document.querySelector('button.bg-primary-container');
+            const steps = document.querySelectorAll('.step-line');
+            let isPickedUp = false;
+
+            mainButton.addEventListener('click', () => {
+                if (!isPickedUp) {
+                    // Change to "Delivery Complete" state
+                    isPickedUp = true;
+                    mainButton.innerHTML = `Livraison terminée <span class="material-symbols-outlined">task_alt</span>`;
+                    mainButton.classList.replace('bg-primary-container', 'bg-tertiary-container');
+                    mainButton.classList.replace('text-on-primary-container', 'text-on-tertiary-container');
+                    
+                    // Update steps UI
+                    const firstStepIcon = document.querySelectorAll('.w-6.h-6')[0];
+                    const secondStepIcon = document.querySelectorAll('.w-6.h-6')[1];
+                    const firstStepTitle = document.querySelector('h3.text-primary');
+                    
+                    firstStepTitle.classList.replace('text-primary', 'text-secondary');
+                    secondStepIcon.classList.replace('border-surface-dim', 'bg-primary');
+                    secondStepIcon.innerHTML = `<span class="material-symbols-outlined text-[14px] text-on-primary" style="font-variation-settings: 'FILL' 1;">check</span>`;
+                } else {
+                    // Success feedback
+                    mainButton.innerText = "Félicitations !";
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000);
+                }
+            });
+        });
+    </script>
+</body></html>

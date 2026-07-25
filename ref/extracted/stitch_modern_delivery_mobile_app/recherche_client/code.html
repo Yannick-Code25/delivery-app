@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Glovo - Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#5f6570",
+                        "tertiary-fixed": "#7ef8d5",
+                        "surface-variant": "#e1e3e4",
+                        "on-surface-variant": "#504534",
+                        "surface-tint": "#7c5800",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#161c25",
+                        "on-primary-fixed-variant": "#5e4200",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f2",
+                        "surface-bright": "#f8fafb",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#f9bd3f",
+                        "on-tertiary-fixed-variant": "#005140",
+                        "on-tertiary-fixed": "#002018",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#7c5800",
+                        "on-secondary-fixed-variant": "#414752",
+                        "primary-fixed": "#ffdea6",
+                        "on-surface": "#191c1d",
+                        "tertiary-fixed-dim": "#60dbba",
+                        "secondary-container": "#dde2f0",
+                        "secondary": "#595f6a",
+                        "on-background": "#191c1d",
+                        "tertiary-container": "#66e1bf",
+                        "background": "#f8fafb",
+                        "primary-container": "#ffc244",
+                        "inverse-primary": "#f9bd3f",
+                        "on-primary-fixed": "#271900",
+                        "surface-container-high": "#e6e8e9",
+                        "on-tertiary-container": "#00624f",
+                        "surface-container-low": "#f2f4f5",
+                        "surface": "#f8fafb",
+                        "on-primary-container": "#715000",
+                        "surface-container-highest": "#e1e3e4",
+                        "outline-variant": "#d4c4ae",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#c1c7d3",
+                        "secondary-fixed": "#dde2f0",
+                        "tertiary": "#006b56",
+                        "surface-container": "#eceeef",
+                        "inverse-surface": "#2e3132",
+                        "outline": "#827562",
+                        "surface-dim": "#d8dadb",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "xl": "64px",
+                        "gutter": "16px",
+                        "margin-desktop": "120px",
+                        "md": "24px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Montserrat"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .category-card {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .category-card:active {
+            transform: scale(0.95);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md selection:bg-primary-container/30">
+<!-- Top AppBar (from JSON) -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-sm flex items-center justify-between px-margin-mobile h-16">
+<div class="flex items-center">
+<button class="text-primary hover:opacity-80 transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tighter">Glovo</h1>
+<div class="flex items-center">
+<button class="text-primary hover:opacity-80 transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-20 pb-28 px-margin-mobile max-w-md mx-auto">
+<!-- Search Bar Section -->
+<div class="mt-sm">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant/50 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-surface-container-low border-none rounded-full py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary-container text-body-lg font-body-lg placeholder:text-on-surface-variant/40 transition-all shadow-sm" placeholder="Where to?" type="text"/>
+</div>
+</div>
+<!-- Recent Searches Section -->
+<section class="mt-md">
+<div class="flex items-center justify-between mb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Recent searches</h2>
+<button class="font-label-md text-label-md text-primary">Clear</button>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 bg-surface-container-highest rounded-full text-label-md text-secondary hover:bg-primary-container/20 transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                    Burger King
+                </button>
+<button class="px-4 py-2 bg-surface-container-highest rounded-full text-label-md text-secondary hover:bg-primary-container/20 transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                    Healthy Salad
+                </button>
+<button class="px-4 py-2 bg-surface-container-highest rounded-full text-label-md text-secondary hover:bg-primary-container/20 transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                    Sushi rolls
+                </button>
+</div>
+</section>
+<!-- Top Categories (Bento-like Grid) -->
+<section class="mt-xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Top categories</h2>
+<div class="grid grid-cols-2 gap-sm">
+<!-- Burgers -->
+<div class="category-card relative h-32 rounded-xl overflow-hidden bg-primary-container/10 flex flex-col justify-end p-sm cursor-pointer border border-neutral/10">
+<div class="absolute -right-2 -top-2 w-20 h-20 opacity-90">
+<img class="w-full h-full object-contain" data-alt="A studio photograph of a premium, juicy gourmet cheeseburger with melting cheddar, fresh lettuce, and ripe tomatoes. The background is a clean, minimalist charcoal gray that highlights the vibrant orange and yellow tones of the food. Lighting is soft yet directional, emphasizing the high-end delivery brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7qutPMPyPJJ-PFhpZnXrAr-QNVDd2Js5UhA7rZCVJk2CEPOhCJKfbuhvSFY4v9Bco870yWJApV0MwTBofcvDYOwhrbT4EcfEa9a6qZpaJzDMFWBcwQN0D9Vjlq9XZ77BkZmTuoVbpEDL9iIl6IofU9pZK_qeUv2l9DWgCePrk-L4vP1koDihjpp8vKpw1jFuB6izEdZSzYbidMOhglbNBr6Z_5whDM6dlafiDtojNGkSSfM9Tg685bMbsyinXE-IntCwQ2K5ckhER"/>
+</div>
+<span class="font-headline-md text-headline-md text-on-primary-container">Burgers</span>
+</div>
+<!-- Sushi -->
+<div class="category-card relative h-32 rounded-xl overflow-hidden bg-tertiary-container/10 flex flex-col justify-end p-sm cursor-pointer border border-neutral/10">
+<div class="absolute -right-2 -top-2 w-20 h-20 opacity-90">
+<img class="w-full h-full object-contain" data-alt="Exquisite artisan sushi rolls with vibrant orange salmon and bright green avocado accents, presented on a sleek ceramic platter. The visual style is modern and high-contrast, set against a pristine white and charcoal gray background. The overall mood is fresh, energetic, and sophisticated, consistent with a premium delivery service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMUlMiB1C--Tgn1JPONusywmpPJbThmXOm_9yd1RPzdShW1svmknjvE8JCW7v8vL2jEg8Ux3jGMgA3LSAFzbI1OE3lvHonL6HANZK2Ifdagc1m2-jiHyZLULEaly02OBz3VpD8TfzE9W6DjBPgpCBevxj8Kb9rglKTmFrc4wmjYzfYEIK5BGlpyxs-lnzkCyBDQjk6te46yqnlGLtGuXUJJ4f6YtMuP97akIv2k5MyrSp8_I3GIEgdHlUPGL9V5c2U74wZNDr5UYHq"/>
+</div>
+<span class="font-headline-md text-headline-md text-on-tertiary-container">Sushi</span>
+</div>
+<!-- Pizza -->
+<div class="category-card relative h-32 rounded-xl overflow-hidden bg-secondary-container/20 flex flex-col justify-end p-sm cursor-pointer border border-neutral/10">
+<div class="absolute -right-2 -top-2 w-20 h-20 opacity-90">
+<img class="w-full h-full object-contain" data-alt="A close-up shot of a wood-fired pepperoni pizza with bubbling golden cheese and crispy edges. The lighting is warm and inviting, emphasizing the rich reds and yellows of the toppings. The background is a minimalist, airy urban kitchen setting, perfectly framing the high-quality product photography for a delivery app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVZg62RbbV3RkR1mGTSa7WkS3sQqbUhPjF6sbUMTSiH8YEUztqcio2CDsJ30OnNcdyFPhDXwwo4ySrY6RpXWmTSfflwjiAjB_AfzC1NpdXVvPAiJrWa2tHnHosBA3A0d5CMyjb0XjKutjt4rdwgcjSYMqXAxqYGnEJLpr4O93pTVBYc07UyT5Be2echVqEF5CQJx6GxY1Ufkau2b8Ep66hD__w1N0FDpnY5LY0ZmZkAyH6TgX8MGJvG4J-xZgPe8jiQAPcad0SXm9Y"/>
+</div>
+<span class="font-headline-md text-headline-md text-on-secondary-container">Pizza</span>
+</div>
+<!-- Desserts -->
+<div class="category-card relative h-32 rounded-xl overflow-hidden bg-error-container/10 flex flex-col justify-end p-sm cursor-pointer border border-neutral/10">
+<div class="absolute -right-2 -top-2 w-20 h-20 opacity-90">
+<img class="w-full h-full object-contain" data-alt="A stack of fluffy pancakes topped with melting butter and vibrant red strawberries, captured with a high-key, airy lighting style. The color palette features warm creams and rich red accents against a clean, light-mode background. The composition is bouncy and joyful, designed for an upscale, efficient urban demographic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD5wWWCzqD9mUR25tfQXb6LpYVOxs_ANc0Lzb4F4-GLAjqgK3IXaKB6Ij9ZUOpOnyO6O_Jvxdl4F5UAzrPPFPaxpcm0Yf0E2pzDfXdXoo3VveNITFfD4vuFo7nR1_IoLW8U2JF8W0seNB8-FEIOVPdkbyEq0UwDMW65dplyQHXSEcLsajrMPYrpeU2EOZSLAsG80uA4MoxexoEqHES1NQWAqvNvSkDwNx1ZgYn5Bf5nTDu99LpyVt5iGCcRpq3l1--h0022-rYn6bX"/>
+</div>
+<span class="font-headline-md text-headline-md text-on-error-container">Dessert</span>
+</div>
+</div>
+</section>
+<!-- Trending Near You -->
+<section class="mt-xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Trending near you</h2>
+<div class="space-y-sm">
+<!-- Trending Card 1 -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-sm border border-surface-variant/30 flex transition-transform active:scale-[0.98]">
+<div class="w-24 h-24 shrink-0">
+<img class="w-full h-full object-cover" data-alt="Professional commercial photography of a gourmet ramen bowl with a perfectly soft-boiled egg and green onions. The shot is overhead, emphasizing texture and freshness. The background is a sophisticated charcoal grey that contrasts with the warm broth colors. The lighting is clean and sharp, suitable for a premium delivery UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIy_7l9TcQQtyjLvV0ZcIUxljV5fXETnPXQ65zFCDi9AtwQ3HtOnYTn0sqeh9gM-mhwIoj5zN8VNMLorXhhuugGMZ4pONB4IdQzah939bMOreWwu2FGkdGtdi2-_aBNqKWF0YinN3Bpc7kEyLpkcKm4-y2EnXXpzcQTnD2xW9agChqb8dMWC53RgMwWL4yZtp62hq90pB8C53VrSMvjxvxFRY90WA92DWFF2oiOgxC8ZyH5T4ngybWNDcZ_7qX2CsOiAnIybV5tl4Y"/>
+</div>
+<div class="flex-1 p-sm flex flex-col justify-between">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">Umami Noodle House</h3>
+<p class="text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">star</span>
+                                4.8 · Japanese · 20-30 min
+                            </p>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container-highest rounded text-[10px] uppercase font-bold text-on-secondary-fixed-variant">Free delivery</span>
+</div>
+</div>
+</div>
+<!-- Trending Card 2 -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-sm border border-surface-variant/30 flex transition-transform active:scale-[0.98]">
+<div class="w-24 h-24 shrink-0">
+<img class="w-full h-full object-cover" data-alt="A high-end, fresh poke bowl filled with vibrant pink tuna, green edamame, and bright mango cubes. The photography is airy and high-contrast, set against a pristine white background. It evokes a sense of health and efficiency, perfectly aligned with a modern urban lifestyle and delivery aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtkQyLtKGzG7U4UBu4Dr5U3ftDRAIkavv1gPSU_6xzp0z2g7uFL57akEgKB_HnDMt4Gk9OazW44mRHjYzcsYrCQfSL7Xg10gnvYwYh3XuWB_TkcsKCRt5bqx_932WGXLOevmRBFoUIo5wc3wEyP4WOEskbVBsNb_pARACRicdzHQo7mA_-qSX-bJowEvYQRj0TA6lMG9CktTGnJ6QkGNRVShSMI-hkrHorab1vEbbG3gaLvkoWYTl54Y0MIoXy_EJYCPxmAtEdT0tf"/>
+</div>
+<div class="flex-1 p-sm flex flex-col justify-between">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">The Poke Bowl</h3>
+<p class="text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">star</span>
+                                4.9 · Healthy · 15-25 min
+                            </p>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-primary-container rounded text-[10px] uppercase font-bold text-on-primary-container">Popular</span>
+</div>
+</div>
+</div>
+<!-- Trending Card 3 -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-sm border border-surface-variant/30 flex transition-transform active:scale-[0.98]">
+<div class="w-24 h-24 shrink-0">
+<img class="w-full h-full object-cover" data-alt="A close-up of premium Italian artisanal gelato in a crisp waffle cone, featuring rich chocolate and creamy vanilla swirls. The lighting is soft and ambient, creating a high-energy, joyful visual. The background is a minimalist light gray, letting the product serve as the main visual driver for this delivery app interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWFZljXBox7Q4ONdUeEDBUWI_0-NeTGR-JajawSvSbicmY9dMuU_Ljdh4l31W0ZM79BNggymAb4VUMF4I5FxzFvarqoGn8NUhhl7mVUR2nO7GdPrOAUpsWOlc7XRd1NvPVjbqnIVFWUQLj32ZynxfmJ-OBWmfAuDlPwCpWIiHYtXOmmCVP6sIdiEfa6g8QzxTzHt8rbEk7aKAbK2IU0MczatYcDCOsqtkW9IyF4Mzr6WYfHSqVvIr70yzWxgkU1zE0aO3EGzrnquLT"/>
+</div>
+<div class="flex-1 p-sm flex flex-col justify-between">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">Bella Gelato</h3>
+<p class="text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">star</span>
+                                4.7 · Desserts · 10-20 min
+                            </p>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container-highest rounded text-[10px] uppercase font-bold text-on-secondary-fixed-variant">Near you</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (from JSON) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface shadow-[0_-8px_24px_rgba(0,0,0,0.12)] flex justify-around items-center h-20 px-4 pb-safe">
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-variant transition-all duration-300 ease-out active:scale-90">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<!-- ACTIVE TAB: Search -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all duration-300 ease-out active:scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-variant transition-all duration-300 ease-out active:scale-90">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-variant transition-all duration-300 ease-out active:scale-90">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+<script>
+        // Simple Micro-interaction: Active state feedback for category cards
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.backgroundColor = 'rgba(255, 194, 68, 0.2)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.backgroundColor = '';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.backgroundColor = '';
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    </script>
+</body></html>

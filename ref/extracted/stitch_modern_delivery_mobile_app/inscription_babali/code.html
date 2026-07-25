@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inscription | Babali Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#7c5800",
+                    "outline-variant": "#d4c4ae",
+                    "outline": "#827562",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#005140",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d8dadb",
+                    "secondary": "#595f6a",
+                    "primary-container": "#ffc244",
+                    "surface-container-high": "#e6e8e9",
+                    "primary": "#7c5800",
+                    "tertiary": "#006b56",
+                    "on-background": "#191c1d",
+                    "on-secondary-fixed-variant": "#414752",
+                    "tertiary-container": "#66e1bf",
+                    "on-tertiary-fixed": "#002018",
+                    "secondary-fixed": "#dde2f0",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#f9bd3f",
+                    "primary-fixed": "#ffdea6",
+                    "on-primary-fixed": "#271900",
+                    "surface-container-low": "#f2f4f5",
+                    "on-surface": "#191c1d",
+                    "surface-container": "#eceeef",
+                    "inverse-on-surface": "#eff1f2",
+                    "on-tertiary-container": "#00624f",
+                    "on-secondary-container": "#5f6570",
+                    "on-primary-container": "#715000",
+                    "tertiary-fixed": "#7ef8d5",
+                    "background": "#f8fafb",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#504534",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#f9bd3f",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "on-secondary-fixed": "#161c25",
+                    "secondary-fixed-dim": "#c1c7d3",
+                    "tertiary-fixed-dim": "#60dbba",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary-fixed-variant": "#5e4200",
+                    "surface": "#f8fafb",
+                    "secondary-container": "#dde2f0",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-bright": "#f8fafb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "xs": "4px",
+                    "md": "24px",
+                    "gutter": "16px",
+                    "margin-mobile": "20px",
+                    "xl": "64px",
+                    "base": "8px",
+                    "lg": "40px",
+                    "margin-desktop": "120px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Montserrat"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Montserrat"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bouncy-btn:active {
+            transform: scale(0.96);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .floating-input:focus-within label {
+            transform: translateY(-20px) scale(0.85);
+            color: #7c5800;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+<!-- Left Side: Visual Narrative (Hidden on Mobile) -->
+<section class="hidden md:flex flex-1 relative items-center justify-center bg-surface-container-low overflow-hidden">
+
+<div class="relative z-10 p-margin-desktop space-y-md max-w-xl">
+<h1 class="font-headline-xl text-headline-xl text-primary mb-sm">
+                Rejoignez l'aventure Babali.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Gérez vos restaurants, suivez vos livraisons et optimisez vos opérations en temps réel avec l'interface la plus rapide du marché.
+            </p>
+<div class="grid grid-cols-2 gap-sm pt-md">
+<div class="p-gutter rounded-xl glass-card border border-outline-variant shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl mb-xs">speed</span>
+<h3 class="font-label-md text-label-md">Rapidité Premium</h3>
+<p class="text-label-sm text-on-surface-variant opacity-70">Exécution en millisecondes.</p>
+</div>
+<div class="p-gutter rounded-xl glass-card border border-outline-variant shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl mb-xs">verified_user</span>
+<h3 class="font-label-md text-label-md">Sécurité Totale</h3>
+<p class="text-label-sm text-on-surface-variant opacity-70">Données chiffrées de bout en bout.</p>
+</div>
+</div>
+</div>
+<!-- Floating Decorative Image -->
+<div class="absolute -bottom-20 -right-20 w-96 h-96 opacity-20">
+<img class="w-full h-full object-contain" data-alt="A high-end 3D render of a golden delivery circular icon with abstract food shapes floating around it. The style is minimalist and urban, using a sophisticated charcoal and Glovo yellow color palette. High-key studio lighting creates soft shadows and a premium, bouncy aesthetic typical of top-tier delivery apps." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGNRYOJAPBVujt5bw3CKCzKMPjSZypqAyctOFZmxRAHhhbRY7j9yf9nlU0Ek6N5_sm6hbBzNAjvPZtV77_Gcs5XqIvoMtS0lM_fOARHuGXf98IUETce7B3JH_Ucs7Dg_MpLCTPHeLp24_q-FPuv5W0DKgTCGnkygXlHDUN6PPG706sUdn7v4AgsH5G9MXwh5Nr7CGjbnp9WWx0pFCjU0gTqjI5B72PigadutFf1SuvsVK3JJt4g_DGMNHJOc1bz-ZHPAjbIb981JrZ"/>
+</div>
+</section>
+<!-- Right Side: Registration Form -->
+<main class="flex-1 flex items-center justify-center p-gutter md:p-margin-desktop relative">
+<!-- Brand Anchor for Mobile -->
+<div class="absolute top-gutter left-gutter md:hidden">
+<span class="font-headline-md text-headline-md font-bold text-primary">Babali Admin</span>
+</div>
+<div class="w-full max-w-md space-y-md">
+<div class="text-center md:text-left mb-lg">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">
+                    Créer un compte
+                </h2>
+<p class="text-on-surface-variant">
+                    Déjà inscrit ? <a class="text-primary font-bold hover:underline" href="#">Connectez-vous ici</a>
+</p>
+</div>
+<form class="space-y-sm" onsubmit="event.preventDefault();">
+<!-- Name Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="full_name">Nom complet</label>
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant/50 group-focus-within:text-primary transition-colors">person</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary-container text-body-md transition-all outline-none" id="full_name" placeholder="Jean Dupont" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="email">Adresse email</label>
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant/50 group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary-container text-body-md transition-all outline-none" id="email" placeholder="admin@babali.com" type="email"/>
+</div>
+</div>
+<!-- Phone Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="phone">Téléphone</label>
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant/50 group-focus-within:text-primary transition-colors">call</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary-container text-body-md transition-all outline-none" id="phone" placeholder="+33 6 00 00 00 00" type="tel"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="password">Mot de passe</label>
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant/50 group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full pl-12 pr-12 py-4 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary-container text-body-md transition-all outline-none" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 text-on-surface-variant/50 hover:text-on-surface" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Terms -->
+<div class="flex items-start gap-sm pt-xs">
+<input class="mt-1 rounded border-outline-variant text-primary focus:ring-primary h-5 w-5 cursor-pointer" id="terms" type="checkbox"/>
+<label class="text-label-sm text-on-surface-variant leading-tight cursor-pointer" for="terms">
+                        J'accepte les <span class="text-primary font-bold">Conditions Générales</span> et la <span class="text-primary font-bold">Politique de Confidentialité</span> de Babali.
+                    </label>
+</div>
+<!-- CTA Button -->
+<button class="bouncy-btn w-full bg-primary-container text-on-primary-container font-headline-md text-headline-md py-4 rounded-full shadow-lg shadow-primary-container/20 flex items-center justify-center gap-2 transition-transform duration-200 mt-md" type="submit">
+                    S'inscrire
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+<!-- Social Logins -->
+<div class="pt-lg space-y-md">
+<div class="relative flex items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-4 text-label-sm text-on-surface-variant uppercase tracking-widest">Ou s'inscrire avec</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-outline-variant rounded-xl font-label-md hover:bg-surface-container-high transition-colors">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi5SCDersz6cEliFeAT1FLjDVNVQXjZ97GBcdbCr5QCw3PdYY_jmUOx-x3s7nGAfzeCHR8q5PV4JZ8QIfZqT3Mr9x4ym1PtUy5kmNj8gwx3oW3kw7mB9zMaj-8AVyG7BwKPq2XJmpWc4JEx8WX9jgaAznO9Enwtvv91crlV7W4tCp8Gtzuep_yGIPYvmzcI7KJoFAEAe_odIOJalptxvEDyt7qLf_HSfAmExZT6pNEoMSPZdUcvA3_FkTtJaMd5Eqcxrzgp3NDZT-D"/>
+                        Google
+                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-outline-variant rounded-xl font-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">file_download</span>
+                        Apple
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Subtle atmospheric effect -->
+<script>
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            // Apply slight parallax to the background if needed
+            // This is just a placeholder for potential interactive micro-interactions
+        });
+
+        // Toggle Password visibility logic
+        const toggleBtn = document.querySelector('button .material-symbols-outlined:contains("visibility")');
+        // Simple logic can be added here
+    </script>
+</body></html>

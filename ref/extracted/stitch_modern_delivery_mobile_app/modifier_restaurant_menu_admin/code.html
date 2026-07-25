@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Modifier le Menu - Babali Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e1e3e4",
+                    "secondary-fixed": "#dde2f0",
+                    "tertiary": "#006b56",
+                    "surface-container-highest": "#e1e3e4",
+                    "outline-variant": "#d4c4ae",
+                    "on-primary-fixed": "#271900",
+                    "primary": "#7c5800",
+                    "inverse-on-surface": "#eff1f2",
+                    "secondary": "#595f6a",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#e6e8e9",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#c1c7d3",
+                    "on-surface": "#191c1d",
+                    "inverse-primary": "#f9bd3f",
+                    "on-primary-fixed-variant": "#5e4200",
+                    "surface-tint": "#7c5800",
+                    "on-secondary-container": "#5f6570",
+                    "tertiary-fixed-dim": "#60dbba",
+                    "tertiary-container": "#66e1bf",
+                    "background": "#f8fafb",
+                    "on-tertiary-fixed-variant": "#005140",
+                    "on-surface-variant": "#504534",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#7ef8d5",
+                    "on-primary-container": "#715000",
+                    "surface-bright": "#f8fafb",
+                    "on-secondary-fixed-variant": "#414752",
+                    "on-error": "#ffffff",
+                    "outline": "#827562",
+                    "on-secondary-fixed": "#161c25",
+                    "on-tertiary-container": "#00624f",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#dde2f0",
+                    "surface-container": "#eceeef",
+                    "surface-container-low": "#f2f4f5",
+                    "surface": "#f8fafb",
+                    "primary-fixed": "#ffdea6",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-fixed": "#002018",
+                    "on-background": "#191c1d",
+                    "surface-dim": "#d8dadb",
+                    "primary-fixed-dim": "#f9bd3f",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#ffc244"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "margin-desktop": "120px",
+                    "gutter": "16px",
+                    "xl": "64px",
+                    "md": "24px",
+                    "xs": "4px",
+                    "margin-mobile": "20px",
+                    "base": "8px",
+                    "lg": "40px"
+            },
+            "fontFamily": {
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+        .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .bento-card {
+            background: white;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bento-card:active {
+            transform: scale(0.98);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md h-16 bg-surface shadow-sm dark:bg-surface-container-high">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-200 transition-transform">
+                menu
+            </button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Babali Admin</h1>
+</div>
+<div class="flex items-center gap-sm">
+<div class="hidden md:flex gap-md mr-md">
+<span class="text-primary font-bold cursor-pointer font-label-md">Dashboard</span>
+<span class="text-secondary hover:text-primary transition-colors cursor-pointer font-label-md">Restaurants</span>
+<span class="text-secondary hover:text-primary transition-colors cursor-pointer font-label-md">Paramètres</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a tech-savvy restaurant administrator in a modern office environment. The lighting is soft and professional, highlighting a clean, high-end urban aesthetic. The color palette features neutral tones with sharp yellow accents in the background, conveying efficiency and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzAM6vy6PauxjeoFXOrP9Jzb5LhSvHKhtq11bWhF2Ocs7aUIUcC2k2kZLSWqqXrECUldzqOSDGtxshoaIs0tuh2InByjbFgQtMNsF2OvoT4cMJvnYzkeseQP_uMGzXyoExmzFcEpvj4WmxffIRnP2sEqINZ3qR_MOfRv4N_jsURB5xGZYiSn36g_42ZraNqZmYZqu1a-RaouQAtl8aig5DBimb-sEebTvj5C56Uio24TXSNQPV7Zto5OIFVFou7DitW7K1VEPWvZqo"/>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop Only) -->
+<nav class="hidden lg:flex flex-col h-full py-md bg-surface border-r border-surface-variant fixed left-0 top-0 w-72 pt-20">
+<div class="px-md mb-lg">
+<h2 class="font-headline-md text-headline-md font-black text-primary">Babali Central</h2>
+<p class="text-label-sm text-secondary">Super Admin v2.4.0</p>
+</div>
+<div class="flex flex-col gap-xs px-sm">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-r-full font-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container rounded-r-full font-bold font-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+                Restaurants
+            </a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-r-full font-label-md" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+                Menu Editor
+            </a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-r-full font-label-md" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                Catalog Control
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 lg:pl-80 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<!-- Header & Navigation Back -->
+<section class="mb-lg flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex items-center gap-sm">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors active:scale-90" onclick="window.history.back()">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg">Modifier le Menu</h2>
+<p class="text-secondary font-body-md">Restaurant: La Trattoria del Sol</p>
+</div>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-low p-2 rounded-xl border border-surface-variant">
+<span class="font-label-md px-2">Statut:</span>
+<button class="relative inline-flex items-center h-8 rounded-full w-16 transition-colors duration-300 bg-primary focus:outline-none" id="statusToggle" onclick="toggleStatus()">
+<span class="translate-x-9 inline-block w-6 h-6 transform bg-white rounded-full transition-transform duration-300"></span>
+</button>
+<span class="font-bold text-primary px-2" id="statusLabel">Actif</span>
+</div>
+</section>
+<!-- Bento Grid Layout for Editor -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md">
+<!-- Basic Info Card -->
+<div class="lg:col-span-5 bento-card rounded-xl p-md shadow-sm border border-surface-variant/50 flex flex-col gap-md">
+<h3 class="font-headline-md text-on-surface">Informations Générales</h3>
+<div class="space-y-sm">
+<label class="block font-label-md text-secondary">Nom du Restaurant</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary rounded-lg p-sm font-body-md transition-all" type="text" value="La Trattoria del Sol"/>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-md text-secondary">Description courte</label>
+<textarea class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary rounded-lg p-sm font-body-md transition-all" rows="3">Authentique cuisine italienne avec des produits frais du marché.</textarea>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-md text-secondary">Image de Couverture</label>
+<div class="relative group h-48 rounded-xl overflow-hidden cursor-pointer bg-surface-container-highest">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="High-resolution professional food photography of a rustic Italian table setting with fresh pasta, tomatoes, and basil. The scene is brightly lit with warm, morning sunlight, creating a high-energy and joyful urban dining mood. The vibrant yellow of a nearby lemon bowl provides a striking accent against the neutral stone background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBfesJLH40iETDXKcKEtdelzfqWcmYNWaAwvuk-crutOUJYD4_fPbt_VLfPjdF7ZzBdaly1iGQR1zb1tHKnGnVtA6sfc1KcbEZ3ZdEcjtFEY_Sbc8tElE6p4JVjCIXpO7kcMQwsXvpCt8Xb1e8KiPi224Uz9ZkaDcO8S9ar_kBfSbhb6t34p2aoCSCajz1TrxZ0Sg8zxMRUd9MGQTXff9y1AblESSZolKvBvpg4IYFKc_o3cUfaBDHioVcIkYE_eC8lHABCwf1WsRX8')"></div>
+<div class="absolute inset-0 bg-on-surface/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-4xl">cloud_upload</span>
+</div>
+</div>
+<p class="text-label-sm text-secondary italic">Recommandé: 1200x600px, max 5Mo</p>
+</div>
+</div>
+<!-- Menu Items Card -->
+<div class="lg:col-span-7 bento-card rounded-xl p-md shadow-sm border border-surface-variant/50 flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-on-surface">Articles du Menu</h3>
+<button class="flex items-center gap-xs px-md py-sm bg-primary text-on-primary rounded-full font-bold shadow-md hover:shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                        Ajouter
+                    </button>
+</div>
+<!-- Chips Filtering (Visual Only) -->
+<div class="flex gap-sm overflow-x-auto pb-sm scroll-hide">
+<span class="px-md py-xs bg-primary text-on-primary rounded-full font-label-md cursor-pointer whitespace-nowrap">Tout</span>
+<span class="px-md py-xs bg-surface-variant text-on-surface-variant rounded-full font-label-md cursor-pointer whitespace-nowrap hover:bg-primary-container transition-colors">Entrées</span>
+<span class="px-md py-xs bg-surface-variant text-on-surface-variant rounded-full font-label-md cursor-pointer whitespace-nowrap hover:bg-primary-container transition-colors">Plats</span>
+<span class="px-md py-xs bg-surface-variant text-on-surface-variant rounded-full font-label-md cursor-pointer whitespace-nowrap hover:bg-primary-container transition-colors">Desserts</span>
+<span class="px-md py-xs bg-surface-variant text-on-surface-variant rounded-full font-label-md cursor-pointer whitespace-nowrap hover:bg-primary-container transition-colors">Boissons</span>
+</div>
+<div class="space-y-sm">
+<!-- Menu Item Row 1 -->
+<div class="flex gap-md p-sm rounded-xl hover:bg-surface-container-low border border-transparent hover:border-surface-variant transition-all items-center">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up of a delicious pizza margherita with melting buffalo mozzarella, fresh basil leaves, and a rich tomato sauce. The lighting is crisp and bright, showcasing the texture of the slightly charred crust. The overall style is clean, modern, and appetizing, emphasizing freshness and quality in a high-contrast minimalist presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW_tqfPVTE4bPwsIqx4eWt4qTRizVI2Z0UIKIDRfsZDrN6ZJijUaHSDSjCKyoWau70b46rz6V56pA2MtoRobbl8QXZNhB7gOzu5nvaUtbETo5A3MjskpsiFzDb7OhbppP6i_E9egkwj6pTiMHfWA4XX0Xw6meqKFZmWNQbuNXyQ55p9N2acJl8zFc-vEDtKCRegASeDsaaOQ6OtZ6b-lCsZLhvdHj1pz_2Wi3z64cRG0tBchRJ_H8naea1G_7pIwtDoIx7Z0eTp_lb"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h4 class="font-bold font-body-lg">Pizza Margherita Royale</h4>
+<span class="font-bold text-primary">14.50 €</span>
+</div>
+<p class="text-label-sm text-secondary line-clamp-1">Mozzarella di bufala, basilic frais, sauce tomate San Marzano.</p>
+<div class="mt-2 flex gap-sm">
+<button class="text-label-sm text-primary font-bold hover:underline">Modifier</button>
+<button class="text-label-sm text-error font-bold hover:underline">Supprimer</button>
+</div>
+</div>
+<div class="material-symbols-outlined text-secondary-fixed-dim cursor-grab">drag_indicator</div>
+</div>
+<hr class="border-surface-variant/30"/>
+<!-- Menu Item Row 2 -->
+<div class="flex gap-md p-sm rounded-xl hover:bg-surface-container-low border border-transparent hover:border-surface-variant transition-all items-center">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A gourmet pasta dish with creamy carbonara sauce, topped with crispy guanciale and a sprinkle of pecorino cheese. The lighting is sophisticated and directional, creating soft shadows and highlighting the silky texture of the sauce. Presented in a minimalist white bowl against a charcoal gray background to make the golden yellow tones pop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAttL0PvkIyRw8X8RtYmGJcN1qq2tjv53qIuW4T8pLAYLGQnYFoufH8A74-Mfadjitcn-h2xLTbdsg0CjILOVKNrgKHYIdwGxxw1ZGitTbeHDDYixt3IFwREDNeic2zY2sntmUQ5XoMWbTKpztpP39XLPkTcX2ySv779wSreAqtzrstNsgeGAe9uY2-dtjZcWGt4Y6GXmymN4h1VlP9ehzbWCx816-wQ5E75kFm47oNGU5Kuqo5oacZWwI01SvrBZbDSpCi2YPycty1"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h4 class="font-bold font-body-lg">Pasta Carbonara Authentique</h4>
+<span class="font-bold text-primary">16.00 €</span>
+</div>
+<p class="text-label-sm text-secondary line-clamp-1">Guanciale, pecorino romano, oeufs frais, poivre noir.</p>
+<div class="mt-2 flex gap-sm">
+<button class="text-label-sm text-primary font-bold hover:underline">Modifier</button>
+<button class="text-label-sm text-error font-bold hover:underline">Supprimer</button>
+</div>
+</div>
+<div class="material-symbols-outlined text-secondary-fixed-dim cursor-grab">drag_indicator</div>
+</div>
+<hr class="border-surface-variant/30"/>
+<!-- Menu Item Row 3 (Paused) -->
+<div class="flex gap-md p-sm rounded-xl bg-surface-container-low/50 opacity-60 grayscale items-center">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A classic tiramisu dessert in a glass, showing layers of coffee-soaked ladyfingers and creamy mascarpone. The lighting is bright and high-key, with a clean aesthetic. The visual style is premium and professional, focusing on the intricate layers and the dusting of cocoa powder on top. Vibrant yellow accents are visible in the blurred background context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3dhJqNe86wAPAPpTyNBmo61XgJSBWd1HEo5RpTmjEEDH9Dr_DvSWUzjsnkdgiLSnEoKSGwzo7vu_6RKnJmV7w3K_3Y_vSJ4rH99fI7MbDKazsq6HiDXe3d-4WtYHe9IdERNgdp9KmbNkzXwaCiYPxJJzjB7-CxB5s9TjpS4cwM3GyRHBnLRkfm618gw23VkT1xv7tq_ONVGkSiGZEAvQJZyN_5EDhqOBUI6UU3GCxk7AGjWgkPrRvvcJYZUSeT_2EiuPINNTg0aYy"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h4 class="font-bold font-body-lg">Tiramisu Maison</h4>
+<span class="font-bold text-secondary italic">Indisponible</span>
+</div>
+<p class="text-label-sm text-secondary line-clamp-1">Recette traditionnelle au café et mascarpone.</p>
+<div class="mt-2 flex gap-sm">
+<button class="text-label-sm text-primary font-bold hover:underline opacity-100">Réactiver</button>
+<button class="text-label-sm text-error font-bold hover:underline opacity-100">Supprimer</button>
+</div>
+</div>
+<div class="material-symbols-outlined text-secondary-fixed-dim cursor-grab">drag_indicator</div>
+</div>
+</div>
+<div class="mt-auto pt-md flex justify-end">
+<p class="text-label-sm text-secondary">3 articles au total</p>
+</div>
+</div>
+</div>
+<!-- Global Actions Bar -->
+<section class="mt-xl flex flex-col md:flex-row items-center justify-end gap-md pb-md">
+<button class="w-full md:w-auto px-lg py-md border-2 border-secondary text-on-surface font-bold rounded-xl hover:bg-surface-container-low transition-all active:scale-95">
+                Annuler les modifications
+            </button>
+<button class="w-full md:w-auto px-xl py-md bg-primary-container text-on-primary-container font-bold rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">save</span>
+                Enregistrer les changements
+            </button>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-surface shadow-[0_-8px_24px_rgba(0,0,0,0.12)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-secondary-container p-2" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm-mobile">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-2xl p-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">store</span>
+<span class="font-label-sm text-label-sm-mobile">Stores</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container p-2" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-label-sm text-label-sm-mobile">Menus</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container p-2" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm-mobile">Settings</span>
+</a>
+</nav>
+<script>
+        function toggleStatus() {
+            const btn = document.getElementById('statusToggle');
+            const dot = btn.querySelector('span');
+            const label = document.getElementById('statusLabel');
+            
+            if (btn.classList.contains('bg-primary')) {
+                // To Paused
+                btn.classList.remove('bg-primary');
+                btn.classList.add('bg-secondary-fixed');
+                dot.classList.remove('translate-x-9');
+                dot.classList.add('translate-x-1');
+                label.innerText = 'En Pause';
+                label.classList.remove('text-primary');
+                label.classList.add('text-secondary');
+            } else {
+                // To Active
+                btn.classList.add('bg-primary');
+                btn.classList.remove('bg-secondary-fixed');
+                dot.classList.add('translate-x-9');
+                dot.classList.remove('translate-x-1');
+                label.innerText = 'Actif';
+                label.classList.add('text-primary');
+                label.classList.remove('text-secondary');
+            }
+        }
+
+        // Simple button push animation micro-interaction
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

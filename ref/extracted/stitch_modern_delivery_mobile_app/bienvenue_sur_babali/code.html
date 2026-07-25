@@ -1,0 +1,103 @@
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { theme: { extend: { "colors": { "primary": "#7c5800", "surface": "#f8fafb" } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface flex flex-col min-h-screen"><main class="flex-1 flex flex-col justify-center"><div class="flex flex-col w-full overflow-hidden relative">
+<!-- Dynamic Background Element: Animated pulse rings -->
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+<svg class="w-full h-full" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="100" cy="100" fill="none" r="40" stroke="#7c5800" stroke-width="0.5">
+<animate attributename="r" dur="3s" from="40" repeatcount="indefinite" to="100"></animate>
+<animate attributename="opacity" dur="3s" from="1" repeatcount="indefinite" to="0"></animate>
+</circle>
+<circle cx="100" cy="100" fill="none" r="20" stroke="#7c5800" stroke-width="0.5">
+<animate attributename="r" begin="1.5s" dur="3s" from="20" repeatcount="indefinite" to="80"></animate>
+<animate attributename="opacity" begin="1.5s" dur="3s" from="1" repeatcount="indefinite" to="0"></animate>
+</circle>
+</svg>
+</div>
+<!-- Main Content Container -->
+<div class="relative z-10 flex flex-col px-margin-mobile py-lg min-h-[751px] justify-between">
+<!-- Illustration Section: Floating Courier -->
+<div class="relative flex items-center justify-center py-md group">
+<!-- Decorative Backdrop Blur Shape -->
+<div class="absolute w-64 h-64 bg-primary-container/30 rounded-full blur-3xl animate-pulse"></div>
+<div class="relative w-full aspect-square max-w-[320px] transition-transform duration-700 ease-out hover:scale-105">
+<img class="w-full h-full object-contain drop-shadow-2xl" data-alt="A vibrant, stylized 3D digital illustration of a sleek delivery courier on a futuristic electric scooter, leaning into a turn to convey speed. The courier wears a charcoal helmet and a bright yellow jacket. Trails of golden light and semi-transparent 'motion lines' follow the vehicle. The background is a minimalist, airy urban dreamscape with soft pastel tones, high-contrast shadows, and a premium glossy finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbXl4AHfkiQjb2sd9JcpoO03cD8gYVsqB1ADQNSsvdCB77gnuXNFqJlXQFohIqS7IUuvE3wMZ498P1X2VA7F2N0UoftvUyw0pz3LoRjz4MO7Ba5_43DmatoCcglBo3wy3Txz3FvkfTc4KvW3rkQtlZVhgAq30kCxw-ZMv2ENFich2LXlzSPkqn4XhR6yUOL9o3gixHwdJyH6BJQ94sP_PwDquSt-PDNtXYPTWfBHukS4buGfGgUM82qMmx07mEuVXr6HqT3_cRos1w"/>
+</div>
+</div>
+<!-- Typography Section -->
+<div class="flex flex-col space-y-sm text-center">
+<div class="inline-flex self-center px-sm py-1 bg-primary-container text-on-primary-container rounded-full mb-base">
+<span class="font-label-md text-label-md uppercase tracking-wider">Fast &amp; Reliable</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">
+        Babali <br/>
+<span class="text-primary italic">La livraison qui pulse</span>
+</h1>
+<p class="font-body-md text-body-md text-secondary max-w-[280px] mx-auto">
+        Vivez l'expérience d'une livraison urbaine ultra-rapide, pensée pour votre rythme de vie.
+      </p>
+</div>
+<!-- Interactive Footer Section -->
+<div class="flex flex-col space-y-md items-center">
+<!-- Pagination Dots -->
+<div class="flex space-x-xs" id="pagination">
+<div class="h-2 w-8 rounded-full bg-primary transition-all duration-300"></div>
+<div class="h-2 w-2 rounded-full bg-surface-variant transition-all duration-300"></div>
+<div class="h-2 w-2 rounded-full bg-surface-variant transition-all duration-300"></div>
+</div>
+<!-- Call to Action -->
+<button class="group relative w-full h-16 bg-primary-container text-on-primary-container rounded-xl font-headline-md text-headline-md flex items-center justify-center overflow-hidden transition-all active:scale-95 shadow-md" id="cta-start">
+<span class="relative z-10 flex items-center gap-base">
+          Commencer
+          <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</span>
+<!-- Shine Effect -->
+<div class="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shine"></div>
+</button>
+<button class="font-label-md text-label-md text-secondary hover:text-primary transition-colors py-xs">
+        Se connecter
+      </button>
+</div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const button = document.getElementById('cta-start');
+      const dots = document.querySelectorAll('#pagination > div');
+      let currentStep = 0;
+
+      // Subtle interaction on dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          dots.forEach(d => {
+            d.classList.remove('w-8', 'bg-primary');
+            d.classList.add('w-2', 'bg-surface-variant');
+          });
+          dot.classList.remove('w-2', 'bg-surface-variant');
+          dot.classList.add('w-8', 'bg-primary');
+        });
+      });
+
+      // Add a magnetic feel or slight feedback to the main button
+      button.addEventListener('touchstart', () => {
+        button.classList.add('shadow-inner');
+      });
+      button.addEventListener('touchend', () => {
+        button.classList.remove('shadow-inner');
+      });
+    });
+  </script>
+<style>
+    @keyframes shine {
+      100% {
+        left: 125%;
+      }
+    }
+    .animate-shine {
+      animation: shine 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+  </style>
+</div></main></body></html>

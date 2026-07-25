@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Glovo | Votre Panier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e1e3e4",
+                        "on-surface": "#191c1d",
+                        "on-tertiary-container": "#00624f",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#c1c7d3",
+                        "inverse-on-surface": "#eff1f2",
+                        "primary": "#7c5800",
+                        "surface": "#f8fafb",
+                        "background": "#f8fafb",
+                        "on-primary-fixed": "#271900",
+                        "surface-container-low": "#f2f4f5",
+                        "outline": "#827562",
+                        "secondary-container": "#dde2f0",
+                        "on-background": "#191c1d",
+                        "inverse-primary": "#f9bd3f",
+                        "on-tertiary-fixed-variant": "#005140",
+                        "on-tertiary-fixed": "#002018",
+                        "on-secondary-fixed-variant": "#414752",
+                        "surface-container-high": "#e6e8e9",
+                        "on-secondary-fixed": "#161c25",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#715000",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#ffc244",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#d4c4ae",
+                        "secondary-fixed": "#dde2f0",
+                        "tertiary-fixed-dim": "#60dbba",
+                        "primary-fixed": "#ffdea6",
+                        "primary-fixed-dim": "#f9bd3f",
+                        "surface-tint": "#7c5800",
+                        "inverse-surface": "#2e3132",
+                        "surface-container": "#eceeef",
+                        "surface-bright": "#f8fafb",
+                        "on-surface-variant": "#504534",
+                        "tertiary-fixed": "#7ef8d5",
+                        "surface-dim": "#d8dadb",
+                        "tertiary-container": "#66e1bf",
+                        "on-error": "#ffffff",
+                        "secondary": "#595f6a",
+                        "on-secondary-container": "#5f6570",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#006b56",
+                        "on-primary-fixed-variant": "#5e4200",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e1e3e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "md": "24px",
+                        "margin-desktop": "120px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "xl": "64px",
+                        "xs": "4px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8fafb;
+            color: #191c1d;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .cart-card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+        .checkout-bar-shadow {
+            box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12);
+        }
+        /* Custom scrollbar for clean UI */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e1e3e4;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface pb-32">
+<!-- TopAppBar - Predestined from Shared Components -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-surface shadow-sm flex items-center justify-between px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="transition-transform active:scale-95 duration-200 text-primary dark:text-primary-fixed-dim">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">Glovo</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="transition-transform active:scale-95 duration-200 text-primary dark:text-primary-fixed-dim hover:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile max-w-2xl mx-auto space-y-md">
+<!-- Order Summary Title -->
+<div class="flex items-baseline justify-between pt-4">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Votre commande</h2>
+<span class="text-label-md font-label-md text-secondary">3 articles</span>
+</div>
+<!-- Cart List Section -->
+<section class="space-y-sm">
+<!-- Item 1 -->
+<div class="bg-surface-container-lowest p-sm rounded-xl cart-card-shadow flex items-center gap-sm">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional studio photograph of a gourmet cheeseburger with melting cheddar, fresh lettuce, and ripe tomatoes on a toasted brioche bun. The lighting is soft and warm, highlighting the textures of the meat and fresh vegetables against a clean, minimalist off-white background that matches the brand's premium delivery aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ2eWYBiSt2oy--o7XIBngYhU0ZC1xqHA5Exx06Zlmn-qf7p8xgFEf1F9knD-lwxHEUDnTK719WT62Y030m9vzRc-rIriBIvvMsjVq61lv9RZQdQlNg5PSYxF3i5BmOIcVMaYiWkf6SFu9mkmt5haIqaGaJsit2pbzs1dtwhsPdbT61uTBJAwpwhc_JO_de-_hcR768V061Sznhc0ekKRHqrzVNFFFQtXD5bAc2nw4yr43uWMyEH4kLwYq6TypfSJEs8uvePmFhJfp"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-label-md text-label-md text-on-surface">Cheeseburger Deluxe</h3>
+<p class="text-label-sm font-label-sm text-secondary">Sans oignons</p>
+<div class="flex items-center justify-between mt-2">
+<span class="text-label-md font-label-md text-primary">12,90 €</span>
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1 gap-3">
+<button class="text-primary hover:opacity-70 transition-opacity"><span class="material-symbols-outlined text-[20px]">remove</span></button>
+<span class="font-label-md text-label-md">1</span>
+<button class="text-primary hover:opacity-70 transition-opacity"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest p-sm rounded-xl cart-card-shadow flex items-center gap-sm">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A vibrant, high-resolution top-down shot of a crispy portion of golden French fries served in a modern, sustainable paper container. The fries are lightly salted and glistening under bright, clean urban lighting. The style is fresh and energetic, emphasizing food quality and speed of service with high-contrast colors and a sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9IfS8limJBtrvNK6ebwhKYn24RsJHCk93tjbiwx7zIDkMCvqTOX-Uoe7fV7Yp0Bzby3sDICZObOwMok2s9ywbP0xFOAp4eUFZM-fQMaehDMpr2z5M1sQm0tRvfwDXcqh3fNrCqQVqbMvYwJJpQJ6Vvn6wxMYmAHfVqcYCIF-eD_Vn-94iT9Q9tSBFq2mYxkUvNFFy-Iz8MaLTiHiflK93hbXx6D1cjMVknA3BhFf21mPurvHsQ2_lHOGoI4dyfICPmCFTOKmWJExL"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-label-md text-label-md text-on-surface">Frites Croustillantes (M)</h3>
+<p class="text-label-sm font-label-sm text-secondary">Sauce Mayo</p>
+<div class="flex items-center justify-between mt-2">
+<span class="text-label-md font-label-md text-primary">4,50 €</span>
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1 gap-3">
+<button class="text-primary hover:opacity-70 transition-opacity"><span class="material-symbols-outlined text-[20px]">remove</span></button>
+<span class="font-label-md text-label-md">1</span>
+<button class="text-primary hover:opacity-70 transition-opacity"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container-lowest p-sm rounded-xl cart-card-shadow flex items-center gap-sm">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A refreshing, ice-cold glass of sparkling cola with condensation droplets on the exterior and a slice of lemon. The image is captured with a shallow depth of field, set against a blurred urban sunset background, conveying a sense of thirst-quenching joy and premium delivery experience. Bright highlights and rich dark tones create a dynamic visual impact." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVHP99ywCQrahuh2q20RltfuIC7C_zXzL6Hx1ieGwrGde_gOC9EWZo0y6D0kXsweDen5sgfxTdVmQWzJ5726_A64m7y7fNqkOSQIDmkuuAJhap3GzqLer4zutb38_SpSPy6PfwgqB5ixeGASo98nXLFtg0nj5QS4vRSmQrMvWsehrjaxt1l_EgpUl4vJp-HjZODjt3KdIgK7193pZ9Kgdlhkf5YiaYdFLG7t0gv5C0kuktcnmspbeZYMPODO7XgpG6ubp0G00W6gHh"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-label-md text-label-md text-on-surface">Coca-Cola Zero</h3>
+<p class="text-label-sm font-label-sm text-secondary">33cl</p>
+<div class="flex items-center justify-between mt-2">
+<span class="text-label-md font-label-md text-primary">2,50 €</span>
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1 gap-3">
+<button class="text-primary hover:opacity-70 transition-opacity"><span class="material-symbols-outlined text-[20px]">remove</span></button>
+<span class="font-label-md text-label-md">1</span>
+<button class="text-primary hover:opacity-70 transition-opacity"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Delivery Address Section -->
+<section class="space-y-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Adresse de livraison</h3>
+<button class="text-label-md font-label-md text-primary hover:underline">Modifier</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl cart-card-shadow overflow-hidden">
+<div class="h-32 bg-surface-variant relative">
+<img class="w-full h-full object-cover" data-location="Paris" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdxOPIr10rEd0WVqxLr2TuoOS__pSBgkjYD5OyI-MKzgsDC_MkZAhUni8vYPmm29X-qE9Jl4aGmgEior-qPYtWj6ODVfuil7aC-XeF256uc0GMd_fOaLn22mTEzZUC0vFsOx0y1ABis9S9ehrV5k7ysGDW81Na6p6esE9OnQP-FmJOUjpyHQ1SV5Dz8O_MlsdBAGY-9eqNY_7-UrO5f6aIqBLPUuYdOKKmtWU7nDCumwbM5a-QAlg6RrkE6Aaki-iZ7zR3qMJgpJOi"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white border-4 border-white shadow-lg">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+</div>
+<div class="p-sm flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary">home</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">15 Avenue des Champs-Élysées</p>
+<p class="text-label-sm font-label-sm text-secondary">75008 Paris • 2ème étage, Apt 4</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment Selection -->
+<section class="space-y-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Moyen de paiement</h3>
+<div class="bg-surface-container-lowest rounded-xl cart-card-shadow p-sm flex items-center justify-between hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-secondary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">credit_card</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">•••• 4242</p>
+<p class="text-label-sm font-label-sm text-secondary">Expire 12/26</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</section>
+<!-- Summary Section -->
+<section class="bg-surface-container-low rounded-xl p-md space-y-sm">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-body-md text-body-md">Sous-total</span>
+<span class="font-label-md text-label-md">19,90 €</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-body-md text-body-md">Frais de livraison</span>
+<span class="font-label-md text-label-md">2,50 €</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-body-md text-body-md">Frais de service</span>
+<span class="font-label-md text-label-md">0,90 €</span>
+</div>
+<div class="pt-sm border-t border-outline-variant flex justify-between items-center text-on-surface">
+<span class="font-headline-md text-headline-md">Total</span>
+<span class="font-headline-md text-headline-md text-primary">23,30 €</span>
+</div>
+</section>
+<!-- Promo Code Input -->
+<div class="flex gap-base">
+<input class="flex-grow bg-surface-container-lowest rounded-xl px-sm py-3 border-none focus:ring-2 focus:ring-primary-container font-body-md text-body-md transition-all" placeholder="Code promo" type="text"/>
+<button class="bg-secondary-container text-on-secondary-container px-md rounded-xl font-label-md text-label-md hover:bg-surface-variant transition-colors">Appliquer</button>
+</div>
+</main>
+<!-- Final Checkout Bar (Fixed Bottom) -->
+<div class="fixed bottom-0 left-0 right-0 bg-surface dark:bg-on-surface px-margin-mobile py-4 checkout-bar-shadow z-50">
+<div class="max-w-2xl mx-auto">
+<button class="w-full bg-primary-container text-on-primary-container py-4 rounded-full font-headline-md text-headline-md flex items-center justify-center gap-sm transition-all duration-300 active:scale-95 shadow-md hover:shadow-lg">
+                Confirmer la commande
+                <span class="material-symbols-outlined">trending_flat</span>
+</button>
+<p class="text-center text-[10px] text-secondary mt-2">En confirmant, vous acceptez nos CGV et notre politique de confidentialité.</p>
+</div>
+</div>
+<!-- Script for Micro-interactions -->
+<script>
+        // Simple quantity selector interaction
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Prevent bubbling if necessary, but keep it simple
+                const icon = this.querySelector('.material-symbols-outlined');
+                if (icon && (icon.innerText === 'add' || icon.innerText === 'remove')) {
+                    const span = this.parentElement.querySelector('span:not(.material-symbols-outlined)');
+                    let val = parseInt(span.innerText);
+                    if (icon.innerText === 'add') val++;
+                    if (icon.innerText === 'remove' && val > 0) val--;
+                    span.innerText = val;
+                }
+            });
+        });
+    </script>
+</body></html>

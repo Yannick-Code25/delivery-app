@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inscription | Babali Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e1e3e4",
+                        "secondary-fixed": "#dde2f0",
+                        "tertiary": "#006b56",
+                        "surface-container-highest": "#e1e3e4",
+                        "outline-variant": "#d4c4ae",
+                        "on-primary-fixed": "#271900",
+                        "primary": "#7c5800",
+                        "inverse-on-surface": "#eff1f2",
+                        "secondary": "#595f6a",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#e6e8e9",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#c1c7d3",
+                        "on-surface": "#191c1d",
+                        "inverse-primary": "#f9bd3f",
+                        "on-primary-fixed-variant": "#5e4200",
+                        "surface-tint": "#7c5800",
+                        "on-secondary-container": "#5f6570",
+                        "tertiary-fixed-dim": "#60dbba",
+                        "tertiary-container": "#66e1bf",
+                        "background": "#f8fafb",
+                        "on-tertiary-fixed-variant": "#005140",
+                        "on-surface-variant": "#504534",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#7ef8d5",
+                        "on-primary-container": "#715000",
+                        "surface-bright": "#f8fafb",
+                        "on-secondary-fixed-variant": "#414752",
+                        "on-error": "#ffffff",
+                        "outline": "#827562",
+                        "on-secondary-fixed": "#161c25",
+                        "on-tertiary-container": "#00624f",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#dde2f0",
+                        "surface-container": "#eceeef",
+                        "surface-container-low": "#f2f4f5",
+                        "surface": "#f8fafb",
+                        "primary-fixed": "#ffdea6",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-fixed": "#002018",
+                        "on-background": "#191c1d",
+                        "surface-dim": "#d8dadb",
+                        "primary-fixed-dim": "#f9bd3f",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#ffc244"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "margin-desktop": "120px",
+                        "gutter": "16px",
+                        "xl": "64px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .bouncy-entry {
+            animation: bouncyEntry 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes bouncyEntry {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .input-focus-ring:focus-within {
+            box-shadow: 0 0 0 2px #ffc244;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background font-body-md text-on-surface min-h-screen flex items-center justify-center p-gutter">
+<!-- Auth Shell Navigation (Suppressed per task context: Sign-up) -->
+<main class="w-full max-w-[480px] flex flex-col gap-md bouncy-entry">
+<!-- 3D Header Section -->
+<div class="relative w-full h-56 rounded-xl overflow-hidden shadow-md bg-surface-container-low">
+<!-- STITCH_THREEJS_START:ANIMATION_24 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_24" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_24');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+camera.position.z = 5;
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+// Create a stylized 3D food delivery box or bag
+const group = new THREE.Group();
+
+// Box body
+const geometry = new THREE.BoxGeometry(2, 2.5, 0.5);
+const material = new THREE.MeshPhongMaterial({ 
+    color: 0xffc244, // Babali Yellow
+    shininess: 100,
+    specular: 0x555555
+});
+const box = new THREE.Mesh(geometry, material);
+group.add(box);
+
+// Handle or strap
+const strapGeom = new THREE.TorusGeometry(0.8, 0.1, 16, 100, Math.PI);
+const strapMat = new THREE.MeshPhongMaterial({ color: 0x8b5e34 }); // Brownish
+const strap = new THREE.Mesh(strapGeom, strapMat);
+strap.position.y = 1.25;
+group.add(strap);
+
+scene.add(group);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0xffffff, 1);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+// Interaction
+let mouseX = 0;
+let mouseY = 0;
+let targetRotationX = 0;
+let targetRotationY = 0;
+
+window.addEventListener('mousemove', (event) => {
+    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+});
+
+function animate() {
+    requestAnimationFrame(animate);
+    
+    // Smooth floating motion
+    group.position.y = Math.sin(Date.now() * 0.002) * 0.2;
+    
+    // React to mouse
+    targetRotationY = mouseX * 0.5;
+    targetRotationX = mouseY * 0.3;
+    
+    group.rotation.y += (targetRotationY - group.rotation.y) * 0.05;
+    group.rotation.x += (targetRotationX - group.rotation.x) * 0.05;
+    
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+
+animate();
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_24 -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex flex-col justify-end p-md">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-white">Rejoignez Babali</h1>
+<p class="font-label-md text-label-md text-white/90">L'avenir de la gestion de restauration.</p>
+</div>
+</div>
+<!-- Signup Form Card -->
+<section class="glass-card rounded-xl p-md shadow-lg">
+<form action="#" class="flex flex-col gap-md" method="POST">
+<!-- Name Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="name">Nom complet</label>
+<div class="relative flex items-center bg-surface-container-low rounded-lg transition-all input-focus-ring">
+<span class="material-symbols-outlined absolute left-sm text-secondary">person</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-sm pl-10 pr-sm text-body-md font-body-md text-on-surface placeholder-secondary/50 rounded-lg" id="name" name="name" placeholder="Jean Dupont" required="" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="email">E-mail professionnel</label>
+<div class="relative flex items-center bg-surface-container-low rounded-lg transition-all input-focus-ring">
+<span class="material-symbols-outlined absolute left-sm text-secondary">mail</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-sm pl-10 pr-sm text-body-md font-body-md text-on-surface placeholder-secondary/50 rounded-lg" id="email" name="email" placeholder="jean@entreprise.fr" required="" type="email"/>
+</div>
+</div>
+<!-- Phone Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="phone">Numéro de téléphone</label>
+<div class="relative flex items-center bg-surface-container-low rounded-lg transition-all input-focus-ring">
+<span class="material-symbols-outlined absolute left-sm text-secondary">phone</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-sm pl-10 pr-sm text-body-md font-body-md text-on-surface placeholder-secondary/50 rounded-lg" id="phone" name="phone" placeholder="+33 6 12 34 56 78" required="" type="tel"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="password">Mot de passe</label>
+<div class="relative flex items-center bg-surface-container-low rounded-lg transition-all input-focus-ring">
+<span class="material-symbols-outlined absolute left-sm text-secondary">lock</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-sm pl-10 pr-sm text-body-md font-body-md text-on-surface placeholder-secondary/50 rounded-lg" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-sm text-secondary hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Terms & Conditions -->
+<div class="flex items-start gap-sm mt-xs">
+<div class="flex items-center h-5">
+<input class="h-5 w-5 rounded border-outline-variant text-primary focus:ring-primary-container cursor-pointer" id="terms" name="terms" required="" type="checkbox"/>
+</div>
+<label class="text-label-sm font-label-sm text-on-surface-variant leading-tight" for="terms">
+                        J'accepte les <a class="text-primary hover:underline" href="#">Conditions d'Utilisation</a> et la <a class="text-primary hover:underline" href="#">Politique de Confidentialité</a>.
+                    </label>
+</div>
+<!-- Submit Button -->
+<button class="mt-sm w-full bg-primary-container text-on-primary-container font-headline-md text-headline-md py-sm rounded-lg shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200" type="submit">
+                    Créer mon compte
+                </button>
+</form>
+<div class="mt-xl flex flex-col items-center gap-md">
+<div class="flex items-center w-full gap-sm">
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+<span class="text-label-sm text-secondary font-label-sm uppercase tracking-wider">Ou s'inscrire avec</span>
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+</div>
+<div class="grid grid-cols-2 gap-sm w-full">
+<button class="flex items-center justify-center gap-sm bg-surface py-sm px-md border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors">
+<img class="w-5 h-5" data-alt="Official high-resolution Google logo icon for a clean, minimalist web login button on a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeWQCNMwfJ4TLlZp3kSRanEJMkDfv3efYu071SW7oO3t6yD3aPvBdPuDFjHq6rEDb4Wrqvw6iYdYLAQ6IUhDUTtc5K2xRYqG6plkNv-ixj52jFWUpEN23cmdWayPNixjSqK-Ue4lLuOnW9y47biWzyXjgi8V8CsURqvedlRISlL2cFyEPjBZAd6sdYOdXTwrNuBhiQwGbc0Qp37mwxsQSyzTLk43A-ZT-dfSCqBZpuUMiKQ0v35BHiNu6rxDAdVU8fL1mI4GurcS1f"/>
+<span class="font-label-md text-label-md">Google</span>
+</button>
+<button class="flex items-center justify-center gap-sm bg-surface py-sm px-md border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors">
+<img class="w-5 h-5" data-alt="Sleek, high-contrast Apple logo icon in charcoal gray, professionally isolated for a luxury modern UI login interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtwcHGvMjANZosCGRe5wwUUT95t0S6D7eTWq7xZjVF8k_Lcr2z2maDT05jjKCZgmCH6VJKMsx2JHv-iKij9vroqtvSh4_qPDxVe4YbW6bLbYP4XDQoIA-W-U6LrWB8jkMk8YkzeBrMUOKEeyWeePypt0wS78oq_Y4tPvgabvPDX0z4d_FfxM36vtk1vvU3LvY3jz-TwBRvqR_tlReZWtzJYFNNFBqqAOf0p_oDVw_bd3ek-p6GyRuPsjm7aOxvF9zQMdd1w5bE6HkU"/>
+<span class="font-label-md text-label-md">Apple</span>
+</button>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant">
+                    Déjà membre ? <a class="text-primary font-bold hover:underline" href="#">Se connecter</a>
+</p>
+</div>
+</section>
+<!-- Footer Note -->
+<footer class="text-center pb-xl">
+<p class="text-label-sm font-label-sm text-secondary opacity-60">© 2024 Babali Admin. Tous droits réservés.</p>
+</footer>
+</main>
+<script>
+        // Micro-interaction for form labels and focus states
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('shadow-[0_0_15px_-3px_rgba(124,88,0,0.1)]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('shadow-[0_0_15px_-3px_rgba(124,88,0,0.1)]');
+            });
+        });
+
+        // Simple password visibility toggle
+        const toggleBtn = document.querySelector('button[type="button"]');
+        const passInput = document.getElementById('password');
+        toggleBtn?.addEventListener('click', () => {
+            const isPass = passInput.type === 'password';
+            passInput.type = isPass ? 'text' : 'password';
+            toggleBtn.querySelector('span').innerText = isPass ? 'visibility_off' : 'visibility';
+        });
+    </script>
+</body></html>

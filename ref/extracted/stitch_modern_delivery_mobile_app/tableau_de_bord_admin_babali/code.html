@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Babali Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#7c5800",
+                    "outline-variant": "#d4c4ae",
+                    "outline": "#827562",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#005140",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d8dadb",
+                    "secondary": "#595f6a",
+                    "primary-container": "#ffc244",
+                    "surface-container-high": "#e6e8e9",
+                    "primary": "#7c5800",
+                    "tertiary": "#006b56",
+                    "on-background": "#191c1d",
+                    "on-secondary-fixed-variant": "#414752",
+                    "tertiary-container": "#66e1bf",
+                    "on-tertiary-fixed": "#002018",
+                    "secondary-fixed": "#dde2f0",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#f9bd3f",
+                    "primary-fixed": "#ffdea6",
+                    "on-primary-fixed": "#271900",
+                    "surface-container-low": "#f2f4f5",
+                    "on-surface": "#191c1d",
+                    "surface-container": "#eceeef",
+                    "inverse-on-surface": "#eff1f2",
+                    "on-tertiary-container": "#00624f",
+                    "on-secondary-container": "#5f6570",
+                    "on-primary-container": "#715000",
+                    "tertiary-fixed": "#7ef8d5",
+                    "background": "#f8fafb",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#504534",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#f9bd3f",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "on-secondary-fixed": "#161c25",
+                    "secondary-fixed-dim": "#c1c7d3",
+                    "tertiary-fixed-dim": "#60dbba",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary-fixed-variant": "#5e4200",
+                    "surface": "#f8fafb",
+                    "secondary-container": "#dde2f0",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-bright": "#f8fafb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "xs": "4px",
+                    "md": "24px",
+                    "gutter": "16px",
+                    "margin-mobile": "20px",
+                    "xl": "64px",
+                    "base": "8px",
+                    "lg": "40px",
+                    "margin-desktop": "120px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Montserrat"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Montserrat"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .vibrant-velocity-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+        .vibrant-velocity-float {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        .chart-container {
+            position: relative;
+            height: 200px;
+        }
+        .nav-transition {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Navigation Drawer (Web) -->
+<aside class="hidden md:flex flex-col h-screen h-full w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant z-50">
+<div class="px-gutter py-lg flex flex-col gap-xs">
+<div class="flex items-center gap-sm mb-lg px-2">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-headline-md">B</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Babali Delivery</h2>
+<p class="text-label-sm text-on-surface-variant">Global Administrator</p>
+</div>
+</div>
+<!-- Dashboard - Active -->
+<a class="bg-primary-container text-on-primary-container rounded-lg mx-2 my-1 flex items-center px-4 py-3 nav-transition active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Restaurants -->
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 flex items-center px-4 py-3 nav-transition active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="storefront">storefront</span>
+<span class="font-label-md text-label-md">Restaurants</span>
+</a>
+<!-- Menus -->
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 flex items-center px-4 py-3 nav-transition active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-label-md text-label-md">Menus</span>
+</a>
+<!-- Orders -->
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 flex items-center px-4 py-3 nav-transition active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="local_shipping">local_shipping</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<!-- Settings -->
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 flex items-center px-4 py-3 nav-transition active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<div class="mt-auto px-6 py-6 border-t border-outline-variant">
+<p class="text-label-sm text-outline">v2.4.0</p>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-surface-container-lowest flex justify-between items-center px-gutter py-sm border-b border-outline-variant">
+<div class="flex items-center md:ml-64">
+<span class="material-symbols-outlined text-primary mr-sm md:hidden" data-icon="menu">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Babali Admin</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden sm:flex items-center bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-outline mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md w-48" placeholder="Search statistics..." type="text"/>
+</div>
+<div class="cursor-pointer active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female tech administrator with a friendly smile, wearing modern office attire, set against a clean studio background with soft warm lighting. The aesthetic is high-quality and professional, fitting for a modern delivery platform dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuQaoWPLde2nMwPeXdXzF7G2UORptVQ3riXdeJ4bF3hftH0SVzChL4kfQNOlRLyRC4d1MP4omMWO6EjWdjwNbZZZa5dNk_dbEiOtgk0GqaiKksmyGes-8Hk_7bK1kug3bIQlW6WdR2GuHhwPx-EBzvL07a6SqeVs5Y2leDpGNHodFu8aH-hLZXmYJfeXmbKQN1WFmIq1o8HzmINAQu3LS-4bcE9K7c34FL4H4IE1rf2TNqfvi0IDuiImBlRJ2xZbfIuaepcVNFzsvj"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="md:ml-64 p-gutter md:p-lg min-h-screen">
+<div class="max-w-7xl mx-auto">
+<!-- Welcome Header -->
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Dashboard Overview</h2>
+<p class="text-body-md text-on-surface-variant">Here's what's happening with Babali today.</p>
+</div>
+<!-- Stats Bento Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-xl">
+<!-- Total Sales -->
+<div class="bg-surface-container-lowest p-md rounded-xl vibrant-velocity-shadow border border-surface-container-low transition-all hover:scale-[1.02]">
+<div class="flex justify-between items-start mb-sm">
+<div class="p-2 rounded-lg bg-primary-container/10">
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+</div>
+<span class="text-tertiary text-label-sm font-bold bg-tertiary-container/20 px-2 py-1 rounded-full">+12.5%</span>
+</div>
+<p class="text-on-surface-variant text-label-md">Total Sales</p>
+<p class="text-headline-md font-bold text-on-surface">$142,384.00</p>
+</div>
+<!-- Total Orders -->
+<div class="bg-surface-container-lowest p-md rounded-xl vibrant-velocity-shadow border border-surface-container-low transition-all hover:scale-[1.02]">
+<div class="flex justify-between items-start mb-sm">
+<div class="p-2 rounded-lg bg-secondary-container">
+<span class="material-symbols-outlined text-secondary" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<span class="text-tertiary text-label-sm font-bold bg-tertiary-container/20 px-2 py-1 rounded-full">+8.2%</span>
+</div>
+<p class="text-on-surface-variant text-label-md">Total Orders</p>
+<p class="text-headline-md font-bold text-on-surface">1,284</p>
+</div>
+<!-- Active Restaurants -->
+<div class="bg-surface-container-lowest p-md rounded-xl vibrant-velocity-shadow border border-surface-container-low transition-all hover:scale-[1.02]">
+<div class="flex justify-between items-start mb-sm">
+<div class="p-2 rounded-lg bg-tertiary-container/30">
+<span class="material-symbols-outlined text-tertiary" data-icon="restaurant">restaurant</span>
+</div>
+<span class="text-on-surface-variant text-label-sm font-bold">Stable</span>
+</div>
+<p class="text-on-surface-variant text-label-md">Active Restaurants</p>
+<p class="text-headline-md font-bold text-on-surface">342</p>
+</div>
+<!-- New Customers -->
+<div class="bg-surface-container-lowest p-md rounded-xl vibrant-velocity-shadow border border-surface-container-low transition-all hover:scale-[1.02]">
+<div class="flex justify-between items-start mb-sm">
+<div class="p-2 rounded-lg bg-primary-container">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="person_add">person_add</span>
+</div>
+<span class="text-tertiary text-label-sm font-bold bg-tertiary-container/20 px-2 py-1 rounded-full">+18%</span>
+</div>
+<p class="text-on-surface-variant text-label-md">New Customers</p>
+<p class="text-headline-md font-bold text-on-surface">89</p>
+</div>
+</div>
+<!-- Performance Graph & Quick Actions -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg mb-xl">
+<!-- Simple Performance Graph (Mockup with CSS/SVG) -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-lg rounded-xl vibrant-velocity-shadow border border-surface-container-low">
+<div class="flex justify-between items-center mb-lg">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Performance Revenue</h3>
+<p class="text-label-sm text-on-surface-variant">Daily sales performance over the last 7 days</p>
+</div>
+<select class="bg-surface-container-low border-none rounded-lg text-label-sm focus:ring-primary">
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+</div>
+<div class="chart-container flex items-end justify-between gap-4 pt-4">
+<div class="flex-1 bg-primary-container/20 rounded-t-lg relative group transition-all hover:bg-primary-container/40" style="height: 60%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$12k</div>
+</div>
+<div class="flex-1 bg-primary-container/20 rounded-t-lg relative group transition-all hover:bg-primary-container/40" style="height: 45%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$9k</div>
+</div>
+<div class="flex-1 bg-primary-container/20 rounded-t-lg relative group transition-all hover:bg-primary-container/40" style="height: 80%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$16k</div>
+</div>
+<div class="flex-1 bg-primary-container rounded-t-lg relative group transition-all hover:brightness-110" style="height: 95%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$19k</div>
+</div>
+<div class="flex-1 bg-primary-container/20 rounded-t-lg relative group transition-all hover:bg-primary-container/40" style="height: 55%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$11k</div>
+</div>
+<div class="flex-1 bg-primary-container/20 rounded-t-lg relative group transition-all hover:bg-primary-container/40" style="height: 70%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$14k</div>
+</div>
+<div class="flex-1 bg-primary-container/20 rounded-t-lg relative group transition-all hover:bg-primary-container/40" style="height: 85%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$17k</div>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-label-sm text-on-surface-variant font-medium">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+<!-- Quick Access / Recent Activity -->
+<div class="bg-surface-container-lowest p-lg rounded-xl vibrant-velocity-shadow border border-surface-container-low flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-lg">Recent Orders</h3>
+<div class="space-y-4 flex-grow">
+<div class="flex items-center gap-sm p-3 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="lunch_dining">lunch_dining</span>
+</div>
+<div class="flex-grow overflow-hidden">
+<p class="text-label-md font-bold truncate">Le Burger Gourmet</p>
+<p class="text-label-sm text-on-surface-variant">Order #9482 • $42.50</p>
+</div>
+<span class="text-[10px] text-tertiary font-bold bg-tertiary-container/20 px-2 py-1 rounded">Delivered</span>
+</div>
+<div class="flex items-center gap-sm p-3 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="local_pizza">local_pizza</span>
+</div>
+<div class="flex-grow overflow-hidden">
+<p class="text-label-md font-bold truncate">Napoli Pizza</p>
+<p class="text-label-sm text-on-surface-variant">Order #9481 • $28.00</p>
+</div>
+<span class="text-[10px] text-primary font-bold bg-primary-container/20 px-2 py-1 rounded">Pending</span>
+</div>
+<div class="flex items-center gap-sm p-3 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="icecream">icecream</span>
+</div>
+<div class="flex-grow overflow-hidden">
+<p class="text-label-md font-bold truncate">Sweet Delights</p>
+<p class="text-label-sm text-on-surface-variant">Order #9480 • $15.20</p>
+</div>
+<span class="text-[10px] text-tertiary font-bold bg-tertiary-container/20 px-2 py-1 rounded">Delivered</span>
+</div>
+</div>
+<button class="mt-lg w-full bg-primary text-on-primary font-label-md py-3 rounded-lg transition-all hover:shadow-lg active:scale-95">
+                        View All Orders
+                    </button>
+</div>
+</div>
+<!-- Management Section (Catalog/Restaurants Grid) -->
+<div class="mb-lg">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Manage Catalog</h2>
+<a class="text-primary font-label-md flex items-center gap-1 hover:underline" href="#">
+                        Explore Full Directory <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Restaurant Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl vibrant-velocity-shadow overflow-hidden group">
+<div class="h-40 relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A vibrant, professional photo of a high-end sushi restaurant platter, featuring fresh nigiri and maki rolls with artistic garnish. The background is a sophisticated, dimly lit modern restaurant interior with warm accent lighting, creating a premium and reliable brand feel for a delivery service catalog." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrl5HTyW6PCVqUcCsu00EwjvYovqc3x9vMA5-YsTE7tfEtYOgkkh7TviN_6eukJ4bHH8ZIpP9TI6nDP0Nr7ZkRA4t7MvYmhYAGZMy5n49t_miN9pOtEI6108D796aZndFpdL8kmHJ7fMpp9su8vihbmWpUUpAw9UYRFWIGHeXyU1Nk4ohS-QHk_s9xvwsIRRja-VfFIVzgtNs9xKzfmmno2Qqu8nQ4zUguaC9DVn1r0kjBX1isiCmrbXnZbsaIzCKADzm-RmC90D2F"/>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+                            </div>
+</div>
+<div class="p-md">
+<h4 class="font-bold text-body-lg mb-1">Sushi Zen Master</h4>
+<p class="text-label-sm text-on-surface-variant mb-md">Japanese • Premium • 25-35 min</p>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-container-high text-on-surface font-label-md py-2 rounded-lg nav-transition hover:bg-outline-variant">Edit Menu</button>
+<button class="p-2 bg-surface-container-low rounded-lg text-primary nav-transition hover:bg-primary-container/20">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Restaurant Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl vibrant-velocity-shadow overflow-hidden group">
+<div class="h-40 relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A close-up, appetizing shot of a gourmet double-stacked beef burger with melting cheese, crispy bacon, and fresh greens on a toasted brioche bun. The lighting is bright and urban, emphasizing the textures and freshness of the food. The background features a clean, modern bistro vibe with charcoal and yellow accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIqdAtXeyNO9xkZdXm1TRzf-3oyWe9S3rlnjDQ3UTSaJ8UltE491KupyiwxPohQjHxgKUNUyM_zozlSBUFtS_ZD-Zl7p3iKuRHyRczwMniGdUOkMcg1faYT2IR8CojpF8aHYu53OiuyslqfgV3PS3e0sNcES_mZBR8hZeUnPV-NGL4kwRxgZUP9uZRQsGQ9gw_ITEjFSwK3UrWX5Yl4FFOk82HBo41sgajR5JnTo2EqIEk73JLEIkhcCtsF1izfg6qtnplINqqEe2H"/>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span> 4.5
+                            </div>
+</div>
+<div class="p-md">
+<h4 class="font-bold text-body-lg mb-1">The Urban Grill</h4>
+<p class="text-label-sm text-on-surface-variant mb-md">American • Burgers • 20-30 min</p>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-container-high text-on-surface font-label-md py-2 rounded-lg nav-transition hover:bg-outline-variant">Edit Menu</button>
+<button class="p-2 bg-surface-container-low rounded-lg text-primary nav-transition hover:bg-primary-container/20">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Add New Restaurant Action -->
+<div class="bg-primary-container/10 border-2 border-dashed border-primary/30 rounded-xl flex flex-col items-center justify-center p-lg group cursor-pointer hover:bg-primary-container/20 transition-all">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</div>
+<h4 class="font-bold text-headline-md text-primary">Add Restaurant</h4>
+<p class="text-label-sm text-on-surface-variant text-center mt-2 px-md">Onboard a new partner to the Babali network</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-4 bg-surface-container-lowest border-t border-outline-variant z-50 rounded-t-xl shadow-lg">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="font-label-sm text-label-sm">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-primary-container/10 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for chart bars
+        document.querySelectorAll('.chart-container > div').forEach(bar => {
+            bar.addEventListener('mouseenter', () => {
+                bar.style.filter = 'brightness(1.1)';
+            });
+            bar.addEventListener('mouseleave', () => {
+                bar.style.filter = 'none';
+            });
+        });
+    </script>
+</body></html>

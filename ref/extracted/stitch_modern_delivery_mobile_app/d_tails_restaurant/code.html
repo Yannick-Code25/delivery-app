@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Restaurant Menu Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .sticky-category {
+            position: sticky;
+            top: 64px;
+            z-index: 40;
+        }
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .cart-animate {
+            animation: bounce-subtle 0.5s ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e1e3e4",
+                    "on-surface": "#191c1d",
+                    "on-tertiary-container": "#00624f",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#c1c7d3",
+                    "inverse-on-surface": "#eff1f2",
+                    "primary": "#7c5800",
+                    "surface": "#f8fafb",
+                    "background": "#f8fafb",
+                    "on-primary-fixed": "#271900",
+                    "surface-container-low": "#f2f4f5",
+                    "outline": "#827562",
+                    "secondary-container": "#dde2f0",
+                    "on-background": "#191c1d",
+                    "inverse-primary": "#f9bd3f",
+                    "on-tertiary-fixed-variant": "#005140",
+                    "on-tertiary-fixed": "#002018",
+                    "on-secondary-fixed-variant": "#414752",
+                    "surface-container-high": "#e6e8e9",
+                    "on-secondary-fixed": "#161c25",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#715000",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#ffc244",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#d4c4ae",
+                    "secondary-fixed": "#dde2f0",
+                    "tertiary-fixed-dim": "#60dbba",
+                    "primary-fixed": "#ffdea6",
+                    "primary-fixed-dim": "#f9bd3f",
+                    "surface-tint": "#7c5800",
+                    "inverse-surface": "#2e3132",
+                    "surface-container": "#eceeef",
+                    "surface-bright": "#f8fafb",
+                    "on-surface-variant": "#504534",
+                    "tertiary-fixed": "#7ef8d5",
+                    "surface-dim": "#d8dadb",
+                    "tertiary-container": "#66e1bf",
+                    "on-error": "#ffffff",
+                    "secondary": "#595f6a",
+                    "on-secondary-container": "#5f6570",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#006b56",
+                    "on-primary-fixed-variant": "#5e4200",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "md": "24px",
+                    "margin-desktop": "120px",
+                    "lg": "40px",
+                    "gutter": "16px",
+                    "base": "8px",
+                    "xl": "64px",
+                    "xs": "4px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top AppBar (JSON Driven Style) -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 w-full bg-transparent transition-colors duration-300" id="top-bar">
+<button class="w-10 h-10 rounded-full bg-white/90 shadow-sm flex items-center justify-center text-on-surface hover:opacity-80 transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full bg-white/90 shadow-sm flex items-center justify-center text-on-surface hover:opacity-80 transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-white/90 shadow-sm flex items-center justify-center text-on-surface hover:opacity-80 transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<main class="pb-32">
+<!-- Hero Section -->
+<section class="relative h-[265px] md:h-[397px] w-full overflow-hidden">
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="A high-end, close-up food photography shot of a signature gourmet burger with melting artisanal cheese and fresh arugula. The lighting is warm and cinematic, highlighting the textures of the brioche bun and juicy meat. The background is a blurred, sophisticated bistro setting in light mode with neutral tones and soft amber highlights, creating a premium delivery brand feel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCpsdEXNiEYMSdDNpJ_VQdFwPPEJcQTQc7nPo4P7axVX30rV9ClTqoT-M-WWvLuZTrUpYWyeWuI_qvOjTkyrKe8Zg8TuWjKmw4p0nXMGeGCWHoxFDUxo8mKI473VwFtPgFnC3JM7JRMpu0iN-W-7q6qjIdPeS6XTEfMtaKcIiuAMB8T6vJLVn8iNwfLmmLdlA3KThWlbjFqKQcSm6G4tfOgupZ8JQBq2SXT5HATFvrMbZN_v7bt-TdpfCc0smxHUUOoArn6Xr4Qut9X')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+</section>
+<!-- Restaurant Info Content -->
+<section class="relative -mt-12 bg-surface rounded-t-[32px] px-margin-mobile pt-8">
+<div class="max-w-[1280px] mx-auto">
+<div class="flex justify-between items-start mb-2">
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tighter">Le Petit Bistro Gourmet</h1>
+<div class="flex flex-col items-end">
+<div class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.8</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-1">(500+ avis)</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+<span class="text-body-md font-body-md">Français • Moderne</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+<span class="text-body-md font-body-md">25-35 min</span>
+</div>
+<button class="text-primary font-bold hover:underline flex items-center gap-1">
+                        En savoir plus
+                        <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<!-- Sticky Category Tabs -->
+<nav class="sticky-category -mx-margin-mobile px-margin-mobile bg-surface py-4 flex gap-4 overflow-x-auto hide-scrollbar border-b border-surface-variant/50">
+<a class="whitespace-nowrap px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-bold text-label-md" href="#entrees">Entrées</a>
+<a class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-bold text-label-md hover:bg-surface-variant transition-colors" href="#plats">Plats principaux</a>
+<a class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-bold text-label-md hover:bg-surface-variant transition-colors" href="#desserts">Desserts</a>
+<a class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-bold text-label-md hover:bg-surface-variant transition-colors" href="#boissons">Boissons</a>
+</nav>
+<!-- Menu Sections -->
+<div class="mt-8 space-y-xl">
+<!-- Section: Entrées -->
+<section id="entrees">
+<h2 class="font-headline-lg text-headline-lg mb-gutter">Entrées</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Item Card -->
+<div class="group bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-surface-container hover:shadow-md transition-all duration-300 flex gap-4">
+<div class="flex-1">
+<h3 class="font-bold text-on-surface text-lg">Burrata des Pouilles</h3>
+<p class="text-on-surface-variant text-label-sm line-clamp-2 mt-1">Burrata crémeuse, tomates cerises marinées au basilic et pesto de pistaches maison.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-bold text-primary">14,50 €</span>
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:scale-105 active:scale-95 transition-transform" onclick="addToCart('Burrata', 14.50)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-cover bg-center" data-alt="A vibrant culinary photo of a fresh burrata cheese ball on a bed of heirloom tomatoes and bright green pesto. Professional food styling on a clean white ceramic plate, high-contrast minimalist lighting, airy and light mood with a focus on fresh ingredients." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD7OfR5gW5cVxFWgC25Ir3zs7Z0BaVxInm0uVQPn0yUokGQzvZfl-QBocz7NHBCmbpBROrdYrO4Z9YAmrDhJ9fZ2jqotnXA8wlN5e1_Z4Au-95feIMCB6SpLrovMhkq8dQ6dYe9pZOSJIbQoebc87oWxeYPaa7JoYuQscZIgGDBWU1EZTMTbN_5SBqqPdad4JiwnhHFAgtBQLah4WMjQIBDmSLyCY0m5cfB1yveKcZCqulV4I5P3GEQfLDzz_i_2GIUbTOiyutXbjnb')"></div>
+</div>
+<div class="group bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-surface-container hover:shadow-md transition-all duration-300 flex gap-4">
+<div class="flex-1">
+<h3 class="font-bold text-on-surface text-lg">Tartare de Saumon</h3>
+<p class="text-on-surface-variant text-label-sm line-clamp-2 mt-1">Saumon frais, dés de mangue, gingembre et citronnelle.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-bold text-primary">12,90 €</span>
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:scale-105 active:scale-95 transition-transform" onclick="addToCart('Tartare', 12.90)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-cover bg-center" data-alt="A beautifully presented salmon tartare with bright orange fish and yellow mango cubes. Garnished with micro-greens in a contemporary bistro style. The lighting is soft and natural, emphasizing the freshness and vibrancy of the colors within a light-mode aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAl__TTEhnP2CWBaTJ6bBAFY4uzoAXUXk48Gztg-Y9bSJgjChyjXTS7AQLXPQIYiT9B0JFKGnZFwKbNUepkNaQCCHGmp5vj_7pf8hh6F0nNLQ6jAMAyEv9BIGY1urT2y9QhTigEsOTfvE-cj-heXfgC07VvrdwvPwbdzeyBMpD7-dg5zXrJJOL7ccl5bgKVCugIrZIYpqvj_SJmEx0ZkZ6-MuqNTbrB3JYF0MK4QYza94bZSo_kcPKYY4-rxkfnAIBSnrROxYGAHHKW')"></div>
+</div>
+</div>
+</section>
+<!-- Section: Plats -->
+<section id="plats">
+<h2 class="font-headline-lg text-headline-lg mb-gutter">Plats principaux</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="group bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-surface-container hover:shadow-md transition-all duration-300 flex gap-4">
+<div class="flex-1">
+<h3 class="font-bold text-on-surface text-lg">Entrecôte Maturée</h3>
+<p class="text-on-surface-variant text-label-sm line-clamp-2 mt-1">300g de bœuf maturé 30 jours, frites maison et sauce au poivre noir du Kerala.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-bold text-primary">28,00 €</span>
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:scale-105 active:scale-95 transition-transform" onclick="addToCart('Entrecôte', 28.00)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-cover bg-center" data-alt="A perfectly seared steak sliced to reveal a medium-rare center, served with golden crispy french fries on a minimalist dark plate. High-key lighting highlights the richness of the meat juices and the texture of the fries. The mood is premium, urban, and reliable." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApbdbeZPgtfXaW5-YNw58tW0Nbx6Yf6x_ZU_sgntbgZolIfk22s05BD59hl3qV1PBM880sSdVcNJ4k09RERG8x3IJXrS2206lM4lV3H-dzoKuRvq8hT1lj58vL-PzM-wfejIqoFzzIPPhJlNXzy9lCpi_7QRb8al-Gg9WguMQTgMTpCqCzzvTwvk8D3o1fwjmZ2uPf6X6TOQQQOiGBfrUDQ0-L6ab_BDRoUZIqofIL6zmCEI9Tq5BcwtkzUFy44hvSyww0gj8EiRWF')"></div>
+</div>
+<div class="group bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-surface-container hover:shadow-md transition-all duration-300 flex gap-4">
+<div class="flex-1">
+<h3 class="font-bold text-on-surface text-lg">Risotto aux Cèpes</h3>
+<p class="text-on-surface-variant text-label-sm line-clamp-2 mt-1">Riz Carnaroli, cèpes frais, copeaux de parmesan 24 mois et huile de truffe blanche.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-bold text-primary">19,50 €</span>
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:scale-105 active:scale-95 transition-transform" onclick="addToCart('Risotto', 19.50)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-cover bg-center" data-alt="Creamy mushroom risotto topped with thin shavings of parmesan cheese and fresh herbs. The dish is presented in a deep white bowl with soft, ambient lighting that emphasizes the creamy texture. The color palette is earthy yet clean, fitting a professional modern UI." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAX6wZ2hQYjT26hwIy__z_bTO_48uRjIS7wAF0Yz5AXEgXb4YmQa-tMAEpzHmy5ekbSL37wI5GfipEwoeTEKDCJyjRzdjrs0mt0AeH0rClo1_cDmC8f7F2B_pdL9FXIZ7IjK8zj3dEvrrAjCyJaPS8Lsp0LfdpSM08-vFcblAIPCPJozHdL-9RdW1TsQbCaAWzJDtSWhduRLJ2YGQ3B9iR_UAkua7PhhaDwekNE5tlkJp_g9FxwICYpjluKItC41W1iqinX-hdbdfRa')"></div>
+</div>
+</div>
+</section>
+<!-- Section: Desserts -->
+<section id="desserts">
+<h2 class="font-headline-lg text-headline-lg mb-gutter">Desserts</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="group bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-surface-container hover:shadow-md transition-all duration-300 flex gap-4">
+<div class="flex-1">
+<h3 class="font-bold text-on-surface text-lg">Mousse au Chocolat Noir</h3>
+<p class="text-on-surface-variant text-label-sm line-clamp-2 mt-1">70% cacao, fleur de sel de Guérande et éclats de noisettes torréfiées.</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-bold text-primary">8,50 €</span>
+<button class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center hover:scale-105 active:scale-95 transition-transform" onclick="addToCart('Mousse', 8.50)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-cover bg-center" data-alt="Decadent dark chocolate mousse served in a glass bowl, topped with crunchy hazelnut pieces and a sprinkle of sea salt. Rich browns contrast against a bright white background, creating a high-contrast minimalist look. Professional food photography style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAgQChswVbYgam9c5w_YN79LdJPAAAVzwZnxNIDWoy7hc-wjCS86E8a2xz8Gw2ji4kU5OwS0vjI8vlWF31JcirIhkUJvP21XAuFSADpGpptgboAtBkI2Kqqv1SGEkUyVBvw2Eys-4ZtG4ekjWN63mxLGGoFUNUzIuDw0D3vbvpWitIMDdBEp2BjHtPHpCRmVIWTRbcnol5QOWaMu9R2OgoiSMl97hteXpfceYzTdg-dY4K3FNrBwhCOVCb0QqSz-tWW5AY29Zqb_c8N')"></div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button: Voir le panier -->
+<div class="fixed bottom-margin-mobile left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-md hidden transform transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-[60]" id="cart-fab">
+<button class="w-full bg-primary-container text-on-primary-container h-16 rounded-full shadow-[0_8px_24px_rgba(124,88,0,0.3)] flex items-center justify-between px-8 group active:scale-95 transition-transform">
+<div class="flex items-center gap-3">
+<div class="bg-on-primary-container text-primary-container w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm" id="cart-count">
+                    1
+                </div>
+<span class="font-bold font-headline-md text-headline-md">Voir le panier</span>
+</div>
+<span class="font-bold text-lg" id="cart-total">0,00 €</span>
+</button>
+</div>
+<!-- Scripts for UI Interactions -->
+<script>
+        let cart = [];
+        const cartFab = document.getElementById('cart-fab');
+        const cartCount = document.getElementById('cart-count');
+        const cartTotal = document.getElementById('cart-total');
+        const topBar = document.getElementById('top-bar');
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+            
+            // Animation feedback
+            cartFab.classList.remove('cart-animate');
+            void cartFab.offsetWidth; // Trigger reflow
+            cartFab.classList.add('cart-animate');
+        }
+
+        function updateCartUI() {
+            if (cart.length > 0) {
+                cartFab.classList.remove('hidden');
+                cartFab.classList.remove('translate-y-20', 'opacity-0');
+                cartFab.classList.add('translate-y-0', 'opacity-100');
+                
+                const total = cart.reduce((sum, item) => sum + item.price, 0);
+                cartCount.innerText = cart.length;
+                cartTotal.innerText = total.toFixed(2).replace('.', ',') + ' €';
+            }
+        }
+
+        // Handle TopBar transparency on scroll
+        window.addEventListener('scroll', () => {
+            const scrollThreshold = 100;
+            if (window.scrollY > scrollThreshold) {
+                topBar.classList.add('bg-surface', 'shadow-sm');
+                topBar.classList.remove('bg-transparent');
+            } else {
+                topBar.classList.remove('bg-surface', 'shadow-sm');
+                topBar.classList.add('bg-transparent');
+            }
+        });
+
+        // Smooth scrolling for category tabs
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const offset = 120; // Adjust based on sticky header height
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Update active state
+                document.querySelectorAll('nav a').forEach(a => {
+                    a.classList.remove('bg-primary-container', 'text-on-primary-container');
+                    a.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+                });
+                this.classList.add('bg-primary-container', 'text-on-primary-container');
+                this.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>
