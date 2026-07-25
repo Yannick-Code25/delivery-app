@@ -7,11 +7,18 @@ import '../../features/admin/presentation/admin_home_screen.dart';
 import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/signup_screen.dart';
 import '../../features/auth/presentation/welcome_screen.dart';
+import '../../features/client/presentation/addresses_screen.dart';
+import '../../features/client/presentation/cart_screen.dart';
 import '../../features/client/presentation/client_home_screen.dart';
 import '../../features/client/presentation/client_orders_screen.dart';
 import '../../features/client/presentation/client_profile_screen.dart';
 import '../../features/client/presentation/client_search_screen.dart';
 import '../../features/client/presentation/client_shell.dart';
+import '../../features/client/presentation/order_review_screen.dart';
+import '../../features/client/presentation/order_tracking_screen.dart';
+import '../../features/client/presentation/payment_methods_screen.dart';
+import '../../features/client/presentation/product_customization_screen.dart';
+import '../../features/client/presentation/restaurant_detail_screen.dart';
 import '../../features/livreur/presentation/livreur_home_screen.dart';
 import '../session/session_providers.dart';
 import 'app_routes.dart';
@@ -97,6 +104,50 @@ final routerProvider = Provider<GoRouter>((ref) {
             ],
           ),
         ],
+      ),
+      // Client screens pushed above the shell, so they cover the bottom nav.
+      GoRoute(
+        path: AppRoutes.clientCart,
+        builder: (context, state) => const CartScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.clientCheckout,
+        builder: (context, state) => const CartScreen(showPayment: true),
+      ),
+      GoRoute(
+        path: AppRoutes.clientAddresses,
+        builder: (context, state) => const AddressesScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.clientPaymentMethods,
+        builder: (context, state) => const PaymentMethodsScreen(),
+      ),
+      GoRoute(
+        path: '${AppRoutes.client}/restaurant/:restaurantId',
+        builder: (context, state) => RestaurantDetailScreen(
+          restaurantId: state.pathParameters['restaurantId']!,
+        ),
+        routes: [
+          GoRoute(
+            path: 'produit/:itemId',
+            builder: (context, state) => ProductCustomizationScreen(
+              restaurantId: state.pathParameters['restaurantId']!,
+              itemId: state.pathParameters['itemId']!,
+            ),
+          ),
+        ],
+      ),
+      GoRoute(
+        path: '${AppRoutes.client}/commande/:orderId/suivi',
+        builder: (context, state) => OrderTrackingScreen(
+          orderId: state.pathParameters['orderId']!,
+        ),
+      ),
+      GoRoute(
+        path: '${AppRoutes.client}/commande/:orderId/noter',
+        builder: (context, state) => OrderReviewScreen(
+          orderId: state.pathParameters['orderId']!,
+        ),
       ),
       GoRoute(
         path: AppRoutes.livreur,

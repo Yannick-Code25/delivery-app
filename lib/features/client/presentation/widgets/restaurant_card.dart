@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/money.dart';
 import '../../../../shared/widgets/pressable.dart';
 import '../../../../shared/widgets/remote_image.dart';
 import '../../domain/restaurant.dart';
@@ -201,7 +202,7 @@ class _Details extends StatelessWidget {
               child: Text(
                 restaurant.hasFreeDelivery
                     ? 'Livraison gratuite'
-                    : 'Livraison ${restaurant.deliveryFee.toStringAsFixed(2).replaceAll('.', ',')} €',
+                    : 'Livraison ${Money.format(restaurant.deliveryFee)}',
                 style: AppTextStyles.labelMd.copyWith(
                   color: restaurant.hasFreeDelivery
                       ? colorScheme.tertiary

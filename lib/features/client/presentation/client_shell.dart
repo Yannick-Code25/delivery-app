@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/router/app_routes.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../core/utils/money.dart';
 import '../application/cart_providers.dart';
 
 /// Bottom navigation shell for the client space, from the BottomNavBar and the
@@ -28,7 +30,7 @@ class ClientShell extends ConsumerWidget {
     return Scaffold(
       body: navigationShell,
       // The cart button only exists while there is something to check out.
-      floatingActionButton: cart.isEmpty ? null : _CartButton(total: cart.total),
+      floatingActionButton: cart.isEmpty ? null : _CartButton(total: cart.subtotal),
       bottomNavigationBar: _NavBar(
         tabs: _tabs,
         currentIndex: navigationShell.currentIndex,
@@ -142,21 +144,19 @@ class _NavItem extends StatelessWidget {
 class _CartButton extends StatelessWidget {
   const _CartButton({required this.total});
 
-  final double total;
+  final int total;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
     return FloatingActionButton.extended(
-      onPressed: () {
-        // TODO: navigate to the cart screen once ref/.../panier_babali_style is built.
-      },
+      onPressed: () => context.push(AppRoutes.clientCart),
       backgroundColor: colorScheme.primaryContainer,
       foregroundColor: colorScheme.onPrimaryContainer,
       icon: const Icon(Icons.shopping_bag_outlined),
       label: Text(
-        'Voir le panier • ${total.toStringAsFixed(2).replaceAll('.', ',')} €',
+        'Voir le panier • ${Money.format(total)}',
         style: AppTextStyles.labelMd.copyWith(color: colorScheme.onPrimaryContainer),
       ),
     );

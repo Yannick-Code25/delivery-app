@@ -12,6 +12,7 @@ class Restaurant {
     required this.deliveryFee,
     required this.imageUrl,
     required this.logoUrl,
+    this.reviewCount = 0,
     this.isOpen = true,
   });
 
@@ -22,10 +23,13 @@ class Restaurant {
   final int deliveryMinMinutes;
   final int deliveryMaxMinutes;
 
-  /// Delivery cost; zero means the card shows "Livraison gratuite".
-  final double deliveryFee;
+  /// Delivery cost in CFA francs; zero means "Livraison gratuite".
+  final int deliveryFee;
   final String imageUrl;
   final String logoUrl;
+
+  /// Shown as "(500+ avis)" on the detail header.
+  final int reviewCount;
   final bool isOpen;
 
   bool get hasFreeDelivery => deliveryFee == 0;

@@ -24,8 +24,17 @@ Future<void> _pumpApp(WidgetTester tester) async {
   await _advance(tester);
 }
 
-/// Scrolls the target into view before tapping it.
+/// Scrolls the target into view before tapping it. A row far down a lazy list
+/// has no element yet, so scroll the page until it is built.
 Future<void> _tap(WidgetTester tester, Finder finder) async {
+  if (finder.evaluate().isEmpty) {
+    final scrollable = find.byWidgetPredicate(
+      (widget) => widget is Scrollable && widget.axisDirection == AxisDirection.down,
+    );
+    await tester.scrollUntilVisible(finder, 250, scrollable: scrollable.first);
+    await _advance(tester);
+  }
+
   await tester.ensureVisible(finder);
   await tester.pump();
   await tester.tap(finder);
@@ -98,8 +107,7 @@ void main() {
     await tester.tap(find.text('Profil'));
     await _advance(tester);
 
-    await tester.tap(find.widgetWithText(OutlinedButton, 'Se déconnecter'));
-    await _advance(tester);
+    await _tap(tester, find.text('Se déconnecter'));
 
     expect(find.text('Commencer'), findsOneWidget);
   });

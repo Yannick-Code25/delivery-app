@@ -1,26 +1,63 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// A chosen extra, kept on the line so the cart can list what was added.
+@immutable
+class CartExtra {
+  const CartExtra({required this.label, required this.price});
+
+  final String label;
+  final int price;
+}
+
 @immutable
 class CartItem {
   const CartItem({
-    required this.id,
+    required this.menuItemId,
     required this.name,
-    required this.unitPrice,
+    required this.basePrice,
+    this.sizeLabel,
+    this.extras = const [],
+    this.note,
     this.quantity = 1,
   });
 
-  final String id;
+  final String menuItemId;
   final String name;
-  final double unitPrice;
+
+  /// Price of the item at the chosen size, before extras, in CFA francs.
+  final int basePrice;
+  final String? sizeLabel;
+  final List<CartExtra> extras;
+  final String? note;
   final int quantity;
 
-  double get lineTotal => unitPrice * quantity;
+  /// Two lines merge only when the same item was configured identically.
+  String get configurationKey {
+    final extraIds = extras.map((extra) => extra.label).toList()..sort();
+    return '$menuItemId|${sizeLabel ?? ''}|${extraIds.join(',')}|${note ?? ''}';
+  }
+
+  int get unitPrice => basePrice + extras.fold(0, (sum, extra) => sum + extra.price);
+
+  int get lineTotal => unitPrice * quantity;
+
+  /// "Large (40cm) • Double Fromage, Olives Noires", or null when plain.
+  String? get configurationLabel {
+    final parts = [
+      ?sizeLabel,
+      if (extras.isNotEmpty) extras.map((extra) => extra.label).join(', '),
+    ];
+    return parts.isEmpty ? null : parts.join(' • ');
+  }
 
   CartItem copyWith({int? quantity}) => CartItem(
-        id: id,
+        menuItemId: menuItemId,
         name: name,
-        unitPrice: unitPrice,
+        basePrice: basePrice,
+        sizeLabel: sizeLabel,
+        extras: extras,
+        note: note,
         quantity: quantity ?? this.quantity,
       );
 }
@@ -37,30 +74,38 @@ class CartState {
 
   int get itemCount => items.fold(0, (sum, item) => sum + item.quantity);
 
-  double get total => items.fold(0, (sum, item) => sum + item.lineTotal);
+  /// Items only; delivery and service fees are added at checkout.
+  int get subtotal => items.fold(0, (sum, item) => sum + item.lineTotal);
 }
 
 class CartController extends Notifier<CartState> {
   @override
   CartState build() => const CartState();
 
-  void add(CartItem item, {required String restaurantId}) {
-    // Switching restaurant replaces the cart rather than mixing menus.
-    final items = state.restaurantId == restaurantId ? [...state.items] : <CartItem>[];
+  /// Adds a line, merging with an identically configured one. Returns false when
+  /// the cart belonged to another restaurant and was replaced.
+  bool add(CartItem item, {required String restaurantId}) {
+    final sameRestaurant = state.restaurantId == null || state.restaurantId == restaurantId;
+    final items = sameRestaurant ? [...state.items] : <CartItem>[];
 
-    final index = items.indexWhere((existing) => existing.id == item.id);
+    final index = items.indexWhere(
+      (existing) => existing.configurationKey == item.configurationKey,
+    );
     if (index == -1) {
       items.add(item);
     } else {
-      items[index] = items[index].copyWith(quantity: items[index].quantity + item.quantity);
+      items[index] = items[index].copyWith(
+        quantity: items[index].quantity + item.quantity,
+      );
     }
 
     state = CartState(restaurantId: restaurantId, items: items);
+    return sameRestaurant;
   }
 
-  void setQuantity(String itemId, int quantity) {
+  void setQuantity(String configurationKey, int quantity) {
     final items = [...state.items];
-    final index = items.indexWhere((item) => item.id == itemId);
+    final index = items.indexWhere((item) => item.configurationKey == configurationKey);
     if (index == -1) return;
 
     if (quantity <= 0) {

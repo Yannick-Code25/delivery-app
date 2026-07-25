@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/router/app_routes.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
@@ -103,9 +105,8 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
               separatorBuilder: (context, index) => const SizedBox(height: AppSpacing.md),
               itemBuilder: (context, index) => RestaurantCard(
                 restaurant: restaurants[index],
-                onTap: () {
-                  // TODO: open ref/.../d_tails_restaurant once that screen exists.
-                },
+                onTap: () =>
+                    context.push(AppRoutes.clientRestaurant(restaurants[index].id)),
               ),
             ),
           ),
