@@ -6,9 +6,11 @@ import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../shared/widgets/primary_button.dart';
+import '../../../shared/widgets/scooter_mark.dart';
 
 /// Onboarding/splash screen, adapted from ref/.../bienvenue_sur_babali/code.html.
-/// TODO: swap the icon placeholder below for the real courier illustration asset.
+/// The hero shows the brand's scooter mark, the same drawing as the launcher
+/// icon and the splash, so the app opens on something the user just tapped.
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
@@ -75,10 +77,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                             ),
                           ],
                         ),
-                        child: Icon(
-                          Icons.electric_scooter,
-                          size: 96,
-                          color: colorScheme.primary,
+                        child: Padding(
+                          padding: const EdgeInsets.all(AppSpacing.md),
+                          child: ScooterMark(
+                            color: colorScheme.onSurface,
+                            speedLineColor: colorScheme.primary,
+                          ),
                         ),
                       ),
                     ],

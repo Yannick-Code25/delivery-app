@@ -20,6 +20,7 @@ import '../../features/client/presentation/payment_methods_screen.dart';
 import '../../features/client/presentation/product_customization_screen.dart';
 import '../../features/client/presentation/restaurant_detail_screen.dart';
 import '../../features/livreur/presentation/livreur_home_screen.dart';
+import '../../features/splash/presentation/splash_screen.dart';
 import '../session/session_providers.dart';
 import 'app_routes.dart';
 
@@ -35,11 +36,15 @@ final routerProvider = Provider<GoRouter>((ref) {
   ref.onDispose(refreshNotifier.dispose);
 
   return GoRouter(
-    initialLocation: AppRoutes.welcome,
+    initialLocation: AppRoutes.splash,
     refreshListenable: refreshNotifier,
     redirect: (context, state) {
       final role = ref.read(currentRoleProvider);
       final location = state.matchedLocation;
+
+      // The splash plays for everyone and routes onward itself.
+      if (location == AppRoutes.splash) return null;
+
       final onAuthScreen = AppRoutes.authRoutes.contains(location);
 
       // Signed out: only the auth screens are reachable.
@@ -54,6 +59,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       return null;
     },
     routes: [
+      GoRoute(
+        path: AppRoutes.splash,
+        builder: (context, state) => const SplashScreen(),
+      ),
       GoRoute(
         path: AppRoutes.welcome,
         builder: (context, state) => const WelcomeScreen(),

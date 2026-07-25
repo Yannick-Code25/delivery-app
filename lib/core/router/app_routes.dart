@@ -1,7 +1,9 @@
 class AppRoutes {
   AppRoutes._();
 
-  static const welcome = '/';
+  /// Launch animation; decides for itself where to send the user next.
+  static const splash = '/';
+  static const welcome = '/bienvenue';
   static const login = '/login';
   static const signup = '/signup';
 

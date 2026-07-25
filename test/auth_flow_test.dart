@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:dabali/features/splash/presentation/splash_screen.dart';
 import 'package:dabali/main.dart';
 
 /// The auth screens animate forever (floating bag, pulse rings), so
@@ -10,6 +11,13 @@ Future<void> _advance(WidgetTester tester) async {
   await tester.pump();
   await tester.pump(const Duration(milliseconds: 400));
   await tester.pump(const Duration(milliseconds: 400));
+}
+
+/// The app opens on the launch animation; ride past it to reach the first screen.
+Future<void> _skipSplash(WidgetTester tester) async {
+  await tester.pump();
+  await tester.pump(SplashScreen.duration + const Duration(milliseconds: 100));
+  await _advance(tester);
 }
 
 /// The default 800x600 test surface is wider and much shorter than a phone,
@@ -21,7 +29,7 @@ Future<void> _pumpApp(WidgetTester tester) async {
   addTearDown(tester.view.resetDevicePixelRatio);
 
   await tester.pumpWidget(const ProviderScope(child: DabaliApp()));
-  await _advance(tester);
+  await _skipSplash(tester);
 }
 
 /// Scrolls the target into view before tapping it. A row far down a lazy list

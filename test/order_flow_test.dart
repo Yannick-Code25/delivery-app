@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:dabali/core/models/user_role.dart';
 import 'package:dabali/core/session/session_providers.dart';
 import 'package:dabali/core/utils/money.dart';
+import 'package:dabali/features/splash/presentation/splash_screen.dart';
 import 'package:dabali/main.dart';
 
 /// Screens animate forever (floating bag, pulsing courier), so pumpAndSettle
@@ -13,6 +14,13 @@ Future<void> _advance(WidgetTester tester) async {
   await tester.pump();
   await tester.pump(const Duration(milliseconds: 400));
   await tester.pump(const Duration(milliseconds: 400));
+}
+
+/// The app opens on the launch animation; ride past it to reach the first screen.
+Future<void> _skipSplash(WidgetTester tester) async {
+  await tester.pump();
+  await tester.pump(SplashScreen.duration + const Duration(milliseconds: 100));
+  await _advance(tester);
 }
 
 /// Boots straight into the client space, skipping the sign-in form.
@@ -28,7 +36,7 @@ Future<void> _pumpSignedIn(WidgetTester tester) async {
       child: const DabaliApp(),
     ),
   );
-  await _advance(tester);
+  await _skipSplash(tester);
 }
 
 /// The vertical list of the current screen. Horizontal rows (filters, category
