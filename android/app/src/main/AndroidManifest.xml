@@ -1,4 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The app talks to the catalogue/orders API and loads remote images.
+         Debug builds get this implicitly; release builds need it declared here. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:label="Dabali"
         android:name="${applicationName}"

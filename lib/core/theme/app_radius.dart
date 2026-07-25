@@ -10,6 +10,9 @@ class AppRadius {
   static const double md = 12;
   static const double lg = 16;
   static const double xl = 24;
+
+  /// Oversized radius used by full-card shells (ref uses rounded-[2rem]).
+  static const double shell = 32;
   static const double full = 9999;
 
   static BorderRadius get card => BorderRadius.circular(lg);

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/router/app_routes.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../shared/widgets/primary_button.dart';
 
 /// Onboarding/splash screen, adapted from ref/.../bienvenue_sur_babali/code.html.
 /// TODO: swap the icon placeholder below for the real courier illustration asset.
@@ -95,7 +97,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                       borderRadius: AppRadius.pill,
                     ),
                     child: Text(
-                      'FAST & RELIABLE',
+                      'RAPIDE & FIABLE',
                       style: AppTextStyles.labelMd.copyWith(
                         color: colorScheme.onPrimaryContainer,
                         letterSpacing: 1.2,
@@ -145,20 +147,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
               const SizedBox(height: AppSpacing.md),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => context.push('/signup'),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Commencer'),
-                      SizedBox(width: AppSpacing.base),
-                      Icon(Icons.arrow_forward),
-                    ],
-                  ),
+                child: PrimaryButton(
+                  label: 'Commencer',
+                  icon: Icons.arrow_forward,
+                  onPressed: () => context.push(AppRoutes.signup),
                 ),
               ),
               TextButton(
-                onPressed: () => context.push('/login'),
+                onPressed: () => context.push(AppRoutes.login),
                 child: const Text('Se connecter'),
               ),
             ],

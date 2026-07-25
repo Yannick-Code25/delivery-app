@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,6 +8,10 @@ import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/signup_screen.dart';
 import '../../features/auth/presentation/welcome_screen.dart';
 import '../../features/client/presentation/client_home_screen.dart';
+import '../../features/client/presentation/client_orders_screen.dart';
+import '../../features/client/presentation/client_profile_screen.dart';
+import '../../features/client/presentation/client_search_screen.dart';
+import '../../features/client/presentation/client_shell.dart';
 import '../../features/livreur/presentation/livreur_home_screen.dart';
 import '../session/session_providers.dart';
 import 'app_routes.dart';
@@ -27,16 +32,18 @@ final routerProvider = Provider<GoRouter>((ref) {
     refreshListenable: refreshNotifier,
     redirect: (context, state) {
       final role = ref.read(currentRoleProvider);
-      final onAuthScreen = state.matchedLocation == AppRoutes.welcome ||
-          state.matchedLocation == AppRoutes.login ||
-          state.matchedLocation == AppRoutes.signup;
+      final location = state.matchedLocation;
+      final onAuthScreen = AppRoutes.authRoutes.contains(location);
 
+      // Signed out: only the auth screens are reachable.
       if (role == null) {
         return onAuthScreen ? null : AppRoutes.welcome;
       }
-      if (onAuthScreen) {
-        return role.homeRoute;
-      }
+
+      // Signed in: skip the auth screens, and keep each role inside its space.
+      if (onAuthScreen) return role.homeRoute;
+      if (!location.startsWith(role.homeRoute)) return role.homeRoute;
+
       return null;
     },
     routes: [
@@ -52,9 +59,44 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: AppRoutes.signup,
         builder: (context, state) => const SignupScreen(),
       ),
-      GoRoute(
-        path: AppRoutes.client,
-        builder: (context, state) => const ClientHomeScreen(),
+      // Client space: four tabs, each keeping its own navigation state.
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) =>
+            ClientShell(navigationShell: navigationShell),
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.client,
+                builder: (context, state) => const ClientHomeScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.clientSearch,
+                builder: (context, state) => const ClientSearchScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.clientOrders,
+                builder: (context, state) => const ClientOrdersScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.clientProfile,
+                builder: (context, state) => const ClientProfileScreen(),
+              ),
+            ],
+          ),
+        ],
       ),
       GoRoute(
         path: AppRoutes.livreur,
