@@ -30,7 +30,11 @@ OUTPUT_DIR = Path("assets/branding")
 
 
 def draw_mark(draw: ImageDraw.ImageDraw, scale: float) -> None:
-    """Draws the scooter and its speed lines on a 1024-unit grid."""
+    """Draws the delivery scooter and its speed lines on a 1024-unit grid.
+
+    A motor scooter, not a kick scooter: seat, body and a delivery box on the
+    rack, which is what says "delivery" at icon size.
+    """
 
     def px(value: float) -> float:
         return value * scale
@@ -67,30 +71,45 @@ def draw_mark(draw: ImageDraw.ImageDraw, scale: float) -> None:
             width=int(px(thickness)),
         )
 
+    def rounded(x0, y0, x1, y1, radius, colour):
+        draw.rounded_rectangle(
+            [px(x0), px(y0), px(x1), px(y1)], radius=px(radius), fill=colour
+        )
+
     # Speed lines trailing behind, in the deeper gold so the scooter stays first.
-    line((150, 545), (285, 545), 30, DEEP_GOLD)
-    line((115, 650), (235, 650), 30, DEEP_GOLD)
-    line((165, 755), (275, 755), 30, DEEP_GOLD)
+    line((105, 470), (215, 470), 28, DEEP_GOLD)
+    line((70, 585), (185, 585), 28, DEEP_GOLD)
+    line((115, 700), (205, 700), 28, DEEP_GOLD)
 
-    rear_wheel = (355, 690)
-    front_wheel = (765, 690)
-    wheel_radius = 100
+    rear_wheel = (350, 730)
+    front_wheel = (770, 730)
+    wheel_radius = 92
 
-    # Deck and column stop at the tyres rather than at the hubs, so nothing
-    # crosses the inside of a wheel and muddies the shape at small sizes.
-    line(
-        (rear_wheel[0] + wheel_radius, 690),
-        (front_wheel[0] - wheel_radius, 690),
-        46,
-        CHARCOAL,
-    )
-    # Steering column rising from the top of the front wheel.
-    line((front_wheel[0], 690 - wheel_radius), (800, 345), 46, CHARCOAL)
-    # Handlebar across the top of the column.
-    line((690, 330), (865, 330), 42, CHARCOAL)
+    # Chassis as one thick polyline: rear shock, under the seat, along the
+    # footboard, then up the leg shield. Round caps keep the joins soft.
+    chassis = [
+        (rear_wheel[0], rear_wheel[1] - wheel_radius),
+        (355, 620),
+        (455, 605),
+        (505, 690),
+        (630, 690),
+        (700, 500),
+    ]
+    for start, end in zip(chassis, chassis[1:]):
+        line(start, end, 52, CHARCOAL)
 
-    ring(rear_wheel, wheel_radius, 46, CHARCOAL)
-    ring(front_wheel, wheel_radius, 46, CHARCOAL)
+    # Front fork down to the wheel.
+    line((695, 515), (front_wheel[0], front_wheel[1] - wheel_radius), 46, CHARCOAL)
+    # Handlebar.
+    line((650, 470), (775, 445), 40, CHARCOAL)
+
+    # Seat.
+    rounded(300, 560, 480, 615, 27, CHARCOAL)
+    # Delivery box on the rack — the detail that reads as "delivery".
+    rounded(225, 400, 385, 550, 26, CHARCOAL)
+
+    ring(rear_wheel, wheel_radius, 44, CHARCOAL)
+    ring(front_wheel, wheel_radius, 44, CHARCOAL)
 
 
 def render(with_background: bool, mark_scale: float) -> Image.Image:

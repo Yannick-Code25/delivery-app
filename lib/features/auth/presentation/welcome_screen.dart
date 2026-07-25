@@ -78,7 +78,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                           ],
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(AppSpacing.md),
+                          padding: const EdgeInsets.all(AppSpacing.base),
                           child: ScooterMark(
                             color: colorScheme.onSurface,
                             speedLineColor: colorScheme.primary,

@@ -45,12 +45,13 @@ class _ScooterPainter extends CustomPainter {
   });
 
   // Design grid shared with the icon generator.
-  static const _wheelRadius = 100.0;
-  static const _rearWheel = Offset(355, 690);
-  static const _frontWheel = Offset(765, 690);
+  static const _wheelRadius = 92.0;
+  static const _wheelStroke = 44.0;
+  static const _rearWheel = Offset(350, 730);
+  static const _frontWheel = Offset(770, 730);
 
   /// Ink bounds of the full mark, used to centre it in any box.
-  static const _inkBounds = Rect.fromLTRB(100, 309, 886, 790);
+  static const _inkBounds = Rect.fromLTRB(56, 400, 884, 844);
 
   final Color color;
   final Color speedLineColor;
@@ -84,11 +85,13 @@ class _ScooterPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;
 
+    paint.strokeWidth = 28;
+
     // Each line grows from its trailing end, so they streak outward.
     const lines = [
-      (Offset(285, 545), Offset(150, 545)),
-      (Offset(235, 650), Offset(115, 650)),
-      (Offset(275, 755), Offset(165, 755)),
+      (Offset(215, 470), Offset(105, 470)),
+      (Offset(185, 585), Offset(70, 585)),
+      (Offset(205, 700), Offset(115, 700)),
     ];
 
     for (final (start, end) in lines) {
@@ -100,27 +103,53 @@ class _ScooterPainter extends CustomPainter {
     final stroke = Paint()
       ..color = color
       ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round
       ..style = PaintingStyle.stroke;
+    final fill = Paint()..color = color;
 
-    // Deck between the tyres, then the column and handlebar.
+    // Chassis as one polyline: rear shock, under the seat, along the footboard,
+    // then up the leg shield.
+    const chassis = [
+      Offset(350, 638), // top of the rear wheel
+      Offset(355, 620),
+      Offset(455, 605),
+      Offset(505, 690),
+      Offset(630, 690),
+      Offset(700, 500),
+    ];
+    final path = Path()..moveTo(chassis.first.dx, chassis.first.dy);
+    for (final point in chassis.skip(1)) {
+      path.lineTo(point.dx, point.dy);
+    }
+    stroke.strokeWidth = 52;
+    canvas.drawPath(path, stroke);
+
+    // Front fork down to the wheel.
     stroke.strokeWidth = 46;
     canvas.drawLine(
-      Offset(_rearWheel.dx + _wheelRadius, _rearWheel.dy),
-      Offset(_frontWheel.dx - _wheelRadius, _frontWheel.dy),
-      stroke,
-    );
-    canvas.drawLine(
+      const Offset(695, 515),
       Offset(_frontWheel.dx, _frontWheel.dy - _wheelRadius),
-      const Offset(800, 345),
       stroke,
     );
 
-    stroke.strokeWidth = 42;
-    canvas.drawLine(const Offset(690, 330), const Offset(865, 330), stroke);
+    // Handlebar.
+    stroke.strokeWidth = 40;
+    canvas.drawLine(const Offset(650, 470), const Offset(775, 445), stroke);
 
-    stroke.strokeWidth = 46;
-    canvas.drawCircle(_rearWheel, _wheelRadius - 23, stroke);
-    canvas.drawCircle(_frontWheel, _wheelRadius - 23, stroke);
+    // Seat, then the delivery box on the rack — the detail that says "delivery".
+    canvas.drawRRect(
+      RRect.fromLTRBR(300, 560, 480, 615, const Radius.circular(27)),
+      fill,
+    );
+    canvas.drawRRect(
+      RRect.fromLTRBR(225, 400, 385, 550, const Radius.circular(26)),
+      fill,
+    );
+
+    stroke.strokeWidth = _wheelStroke;
+    final tyreRadius = _wheelRadius - _wheelStroke / 2;
+    canvas.drawCircle(_rearWheel, tyreRadius, stroke);
+    canvas.drawCircle(_frontWheel, tyreRadius, stroke);
   }
 
   @override
